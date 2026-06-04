@@ -529,6 +529,39 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
 }
+/* שדה טלפון עם קידומת +972 קבועה (תמיד LTR — מספרי טלפון נכתבים משמאל לימין) */
+.phone-input {
+  display: flex;
+  direction: ltr;
+  align-items: stretch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.phone-input:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.25);
+}
+.phone-input__prefix {
+  display: flex;
+  align-items: center;
+  padding: 0 0.9rem;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-weight: 600;
+  white-space: nowrap;
+  border-inline-end: 1px solid var(--border);
+}
+.field .phone-input input {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+}
+.field .phone-input input:focus { box-shadow: none; }
 .contact__success {
   text-align: center;
   font-weight: 700;

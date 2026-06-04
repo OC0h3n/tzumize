@@ -208,9 +208,11 @@
       const data = new FormData(form);
       const typeSel = form.querySelector("#type");
       const typeText = typeSel.options[typeSel.selectedIndex].textContent;
+      // הוספת קידומת +972 למספר שהוזן (מסירים 0 מוביל אם יש)
+      const phone = "+972 " + String(data.get("phone") || "").trim().replace(/^0+/, "");
       const lines = lang === "he"
-        ? `הזמנת הרצאה:\nשם: ${data.get("name")}\nטלפון: ${data.get("phone")}\nסוג: ${typeText}\nהודעה: ${data.get("message") || "-"}`
-        : `Lecture booking:\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\nType: ${typeText}\nMessage: ${data.get("message") || "-"}`;
+        ? `הזמנת הרצאה:\nשם: ${data.get("name")}\nטלפון: ${phone}\nסוג: ${typeText}\nהודעה: ${data.get("message") || "-"}`
+        : `Lecture booking:\nName: ${data.get("name")}\nPhone: ${phone}\nType: ${typeText}\nMessage: ${data.get("message") || "-"}`;
       window.open(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(lines)}`, "_blank");
 
       form.querySelector("#formSuccess").hidden = false;
