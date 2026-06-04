@@ -208,8 +208,16 @@
       const data = new FormData(form);
       const typeSel = form.querySelector("#type");
       const typeText = typeSel.options[typeSel.selectedIndex].textContent;
-      // הוספת קידומת +972 למספר שהוזן (מסירים 0 מוביל אם יש)
-      const phone = "+972 " + String(data.get("phone") || "").trim().replace(/^0+/, "");
+      // חילוץ הספרות בלבד (בלי מקפים/X) + ודא שכל הספרות מולאו
+      const rawDigits = String(data.get("phone") || "").replace(/\D/g, "");
+      if (rawDigits.length < 9) {
+        const pin = form.querySelector("#phone");
+        pin.setCustomValidity(lang === "he" ? "אנא מלאו את כל ספרות הטלפון" : "Please fill in the full phone number");
+        pin.reportValidity();
+        return;
+      }
+      // הוספת קידומת +972 (מסירים 0 מוביל אם יש)
+      const phone = "+972 " + rawDigits.replace(/^0+/, "");
       const lines = lang === "he"
         ? `הזמנת הרצאה:\nשם: ${data.get("name")}\nטלפון: ${phone}\nסוג: ${typeText}\nהודעה: ${data.get("message") || "-"}`
         : `Lecture booking:\nName: ${data.get("name")}\nPhone: ${phone}\nType: ${typeText}\nMessage: ${data.get("message") || "-"}`;
@@ -217,6 +225,32 @@
 
       form.querySelector("#formSuccess").hidden = false;
       form.reset();
+    });
+  }
+
+  /* ---------- מסכת טלפון: XX-XXX-XXXX, כל ספרה אוכלת X אחד ---------- */
+  function initPhoneMask() {
+    const input = document.getElementById("phone");
+    if (!input) return;
+    const template = "XX-XXX-XXXX";
+    const slots = [];
+    for (let i = 0; i < template.length; i++) if (template[i] === "X") slots.push(i);
+
+    function format(digits) {
+      const chars = template.split("");
+      for (let i = 0; i < slots.length; i++) {
+        chars[slots[i]] = i < digits.length ? digits[i] : "X";
+      }
+      return chars.join("");
+    }
+
+    input.addEventListener("input", () => {
+      input.setCustomValidity("");
+      const digits = (input.value.match(/\d/g) || []).join("").slice(0, slots.length);
+      if (!digits.length) { input.value = ""; return; } // ריק => חוזר ל-placeholder
+      input.value = format(digits);
+      const caret = slots[digits.length - 1] + 1; // הצמדת הסמן אחרי הספרה האחרונה
+      input.setSelectionRange(caret, caret);
     });
   }
 
@@ -228,6 +262,7 @@
     initCounters();
     initNav();
     initForm();
+    initPhoneMask();
 
     document.getElementById("langToggle").addEventListener("click", () => {
       applyLang(lang === "he" ? "en" : "he");
