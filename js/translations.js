@@ -198,15 +198,16 @@ const PRICING = [
 ];
 
 /* ----------------------------------------------------------------
-   רילסים — עד שתוסיפו קבצי וידאו אמיתיים, ה-src ריק וה-poster
-   הוא gradient. כדי להוסיף וידאו: שימו קובץ ב-assets/videos/
-   ועדכנו את שדה src. אפשר גם להוסיף poster: "assets/images/x.jpg".
+   רילסים — שמות קבצים קבועים. כדי להציג סרטון: שימו קובץ בשם
+   reel1.mp4 / reel2.mp4 / reel3.mp4 / reel4.mp4 בתיקייה assets/videos/
+   (אותיות קטנות!). קובץ שחסר — מוצג אוטומטית רקע צבעוני במקומו.
+   אפשר גם תמונת תצוגה: reel1.jpg וכו' בתיקייה assets/images/.
    ---------------------------------------------------------------- */
 const REELS = [
-  { src: "", poster: "", title: { he: "רגע מהבמה #1", en: "Stage moment #1" } },
-  { src: "", poster: "", title: { he: "רגע מהבמה #2", en: "Stage moment #2" } },
-  { src: "", poster: "", title: { he: "רגע מהבמה #3", en: "Stage moment #3" } },
-  { src: "", poster: "", title: { he: "רגע מהבמה #4", en: "Stage moment #4" } }
+  { src: "assets/videos/reel1.mp4", poster: "assets/images/reel1.jpg", title: { he: "רגע מהבמה #1", en: "Stage moment #1" } },
+  { src: "assets/videos/reel2.mp4", poster: "assets/images/reel2.jpg", title: { he: "רגע מהבמה #2", en: "Stage moment #2" } },
+  { src: "assets/videos/reel3.mp4", poster: "assets/images/reel3.jpg", title: { he: "רגע מהבמה #3", en: "Stage moment #3" } },
+  { src: "assets/videos/reel4.mp4", poster: "assets/images/reel4.jpg", title: { he: "רגע מהבמה #4", en: "Stage moment #4" } }
 ];
 
 /* ----------------------------------------------------------------

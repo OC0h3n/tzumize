@@ -86,8 +86,11 @@
     <div class="container about__grid">
       <div class="about__photo reveal">
         <div class="about__photo-frame">
-          <!-- TODO: החליפו בתמונת המרצה — assets/images/speaker.jpg -->
-          <div class="about__photo-placeholder">📷</div>
+          <!-- כדי להחליף: שימו קובץ בשם speaker.jpg בתיקייה assets/images/ (אותיות קטנות).
+               אם הקובץ חסר — יוצג ה-placeholder עם 📷 אוטומטית. -->
+          <img class="about__photo-img" src="assets/images/speaker.jpg" alt="תמונת המרצה"
+               onerror="this.style.display='none'; this.nextElementSibling.hidden=false;" />
+          <div class="about__photo-placeholder" hidden>📷</div>
         </div>
       </div>
       <div class="about__text reveal">

@@ -288,6 +288,12 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--shadow);
   aspect-ratio: 4 / 5;
 }
+.about__photo-img {
+  width: 100%; height: 100%;
+  border-radius: calc(var(--radius-lg) - 8px);
+  object-fit: cover;
+  display: block;
+}
 .about__photo-placeholder {
   width: 100%; height: 100%;
   border-radius: calc(var(--radius-lg) - 8px);
@@ -295,6 +301,7 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: center;
   font-size: 4rem;
 }
+.about__photo-placeholder[hidden] { display: none; }
 .about__text .section__title { text-align: start; }
 .about__text p { color: var(--text-dim); margin-bottom: 1.1rem; }
 .about__list { margin-top: 1.5rem; display: grid; gap: 0.7rem; }

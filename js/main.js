@@ -99,6 +99,18 @@
         </div>`;
     }).join("");
 
+    // אם קובץ הווידאו חסר (404) — מחליפים אותו ברקע צבעוני במקום וידאו שבור
+    grid.querySelectorAll("video").forEach((video) => {
+      video.addEventListener("error", () => {
+        const reel = video.closest(".reel");
+        if (!reel) return;
+        reel.setAttribute("data-has-video", "0");
+        const ph = document.createElement("div");
+        ph.className = "reel__placeholder";
+        video.replaceWith(ph);
+      });
+    });
+
     // הפעלת וידאו בלחיצה (רק אם יש קובץ)
     grid.querySelectorAll(".reel").forEach((reel) => {
       reel.addEventListener("click", () => {
