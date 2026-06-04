@@ -87,10 +87,11 @@
     const grid = document.getElementById("reelsGrid");
     if (!grid) return;
     const playLabel = TRANSLATIONS[lang]["reels.play"];
+    const placeholderHTML = `<div class="reel__placeholder"><span class="reel__ph-icon">🎬</span><span class="reel__ph-soon">${TRANSLATIONS[lang]["reels.soon"]}</span></div>`;
     grid.innerHTML = REELS.map((r) => {
       const media = r.src
         ? `<video src="${r.src}" ${r.poster ? `poster="${r.poster}"` : ""} preload="metadata" playsinline></video>`
-        : `<div class="reel__placeholder"></div>`;
+        : placeholderHTML;
       return `
         <div class="reel reveal" data-has-video="${r.src ? "1" : "0"}">
           ${media}
@@ -99,15 +100,15 @@
         </div>`;
     }).join("");
 
-    // אם קובץ הווידאו חסר (404) — מחליפים אותו ברקע צבעוני במקום וידאו שבור
+    // אם קובץ הווידאו חסר (404) — מחליפים בכרטיס "בקרוב" אלגנטי במקום וידאו שבור
     grid.querySelectorAll("video").forEach((video) => {
       video.addEventListener("error", () => {
         const reel = video.closest(".reel");
         if (!reel) return;
         reel.setAttribute("data-has-video", "0");
-        const ph = document.createElement("div");
-        ph.className = "reel__placeholder";
-        video.replaceWith(ph);
+        const tpl = document.createElement("template");
+        tpl.innerHTML = placeholderHTML;
+        video.replaceWith(tpl.content.firstElementChild);
       });
     });
 

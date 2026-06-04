@@ -378,10 +378,27 @@ img { max-width: 100%; display: block; }
 .reel__placeholder {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #2a2350, #14304a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(124, 92, 255, 0.14), transparent 60%),
+    var(--bg-soft);
 }
-.reel:nth-child(2n) .reel__placeholder { background: linear-gradient(160deg, #3a1f44, #4a2a3a); }
-.reel:nth-child(3n) .reel__placeholder { background: linear-gradient(160deg, #1f3a44, #2a4a3a); }
+.reel__ph-icon { font-size: 2.4rem; opacity: 0.45; }
+.reel__ph-soon {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35em 0.9em;
+}
+/* בכרטיס ללא וידאו אין מה לנגן — מסתירים את כפתור ה-▶ */
+.reel[data-has-video="0"] .reel__play { display: none; }
 .reel__overlay {
   position: absolute;
   inset: 0;

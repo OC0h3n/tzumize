@@ -7,10 +7,10 @@
 
 const TRANSLATIONS = {
   he: {
-    "meta.title": "שם המרצה | הרצאות שמשאירות חותם",
+    "meta.title": "מאיה כהן הראל | הרצאות שמשאירות חותם",
     "meta.description": "הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו",
 
-    "nav.brand": "שם המרצה",
+    "nav.brand": "מאיה כהן הראל",
     "nav.about": "אודות",
     "nav.lectures": "הרצאות",
     "nav.reels": "רגעים",
@@ -28,7 +28,7 @@ const TRANSLATIONS = {
     "hero.stat3": "שנות ניסיון",
 
     "about.eyebrow": "קצת עליי",
-    "about.title": "מי עומד מאחורי הבמה",
+    "about.title": "מי עומדת מאחורי הבמה",
     "about.p1": "כבר למעלה מעשור אני עולה לבמות מול קהלים מגוונים — מבני נוער ועד מנהלים בכירים. ההרצאות שלי משלבות סיפור אישי, תובנות מעשיות והרבה אנרגיה, ומשאירות את הקהל עם משהו לקחת הביתה.",
     "about.p2": "כל הרצאה נבנית בהתאמה אישית לקהל ולמטרה — בין אם זו הרצאת מוטיבציה לנוער, יום גיבוש לארגון, או ערב העשרה קהילתי.",
     "about.li1": "✦ הרצאות מותאמות אישית לכל קהל",
@@ -43,6 +43,7 @@ const TRANSLATIONS = {
     "reels.title": "רגעים מתוך ההרצאות",
     "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה. (החליפו בקבצי הווידאו שלכם)",
     "reels.play": "נגן",
+    "reels.soon": "בקרוב",
 
     "pricing.eyebrow": "חבילות והזמנה",
     "pricing.title": "מחירון הרצאות",
@@ -66,8 +67,8 @@ const TRANSLATIONS = {
     "contact.send": "שליחה",
     "contact.success": "תודה! נחזור אליכם בהקדם 🙌",
 
-    "footer.phone": "📞 050-000-0000",
-    "footer.copy": "© 2026 שם המרצה. כל הזכויות שמורות.",
+    "footer.phone": "📞 052-854-3393",
+    "footer.copy": "© 2026 מאיה כהן הראל. כל הזכויות שמורות.",
 
     // כרטיסי הרצאות — ערכו/הוסיפו לפי הצורך
     "cards.lectures": [
@@ -81,10 +82,10 @@ const TRANSLATIONS = {
   },
 
   en: {
-    "meta.title": "Speaker Name | Talks That Leave a Mark",
+    "meta.title": "Maya Cohen Harel | Talks That Leave a Mark",
     "meta.description": "Captivating talks for teens and adults — book a lecture now",
 
-    "nav.brand": "Speaker Name",
+    "nav.brand": "Maya Cohen Harel",
     "nav.about": "About",
     "nav.lectures": "Lectures",
     "nav.reels": "Moments",
@@ -117,6 +118,7 @@ const TRANSLATIONS = {
     "reels.title": "Moments from the talks",
     "reels.sub": "Short clips that give a taste of the energy. (Replace with your own videos)",
     "reels.play": "Play",
+    "reels.soon": "Coming soon",
 
     "pricing.eyebrow": "Packages & booking",
     "pricing.title": "Lecture Pricing",
@@ -140,8 +142,8 @@ const TRANSLATIONS = {
     "contact.send": "Send",
     "contact.success": "Thank you! We'll be in touch soon 🙌",
 
-    "footer.phone": "📞 +972 50-000-0000",
-    "footer.copy": "© 2026 Speaker Name. All rights reserved.",
+    "footer.phone": "📞 +972 52-854-3393",
+    "footer.copy": "© 2026 Maya Cohen Harel. All rights reserved.",
 
     "cards.lectures": [
       { icon: "🚀", title: "Breaking Forward", desc: "A motivational talk on leaving your comfort zone and achieving goals.", tag: "Youth" },
@@ -162,7 +164,7 @@ const PRICING = [
   {
     id: "youth",
     popular: false,
-    price: 1500,
+    price: 2000,
     currency: "₪",
     name: { he: "הרצאה לנוער", en: "Youth Talk" },
     desc: { he: "מותאמת לבתי ספר ותנועות נוער", en: "Tailored for schools & youth groups" },
@@ -174,7 +176,7 @@ const PRICING = [
   {
     id: "adults",
     popular: true,
-    price: 2500,
+    price: 4500,
     currency: "₪",
     name: { he: "הרצאה למבוגרים", en: "Adults Talk" },
     desc: { he: "לארגונים, אירועים וערבי העשרה", en: "For organizations, events & enrichment evenings" },
@@ -214,6 +216,6 @@ const REELS = [
    פרטי קשר — עדכנו כאן את מספר הוואטסאפ (בפורמט בינלאומי, ללא +).
    ---------------------------------------------------------------- */
 const CONTACT = {
-  whatsapp: "972500000000", // לדוגמה: 972501234567
+  whatsapp: "972528543393", // מאיה כהן הראל
   whatsappMsg: { he: "היי! אשמח לשמוע פרטים על הזמנת הרצאה 🙂", en: "Hi! I'd love details about booking a talk 🙂" }
 };
