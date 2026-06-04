@@ -195,7 +195,10 @@
           <label for="phone" data-i18n="contact.phone">טלפון</label>
           <div class="phone-input">
             <span class="phone-input__prefix">+972</span>
-            <input type="tel" id="phone" name="phone" dir="ltr" inputmode="tel" placeholder="XX-XXX-XXXX" required />
+            <span class="phone-field">
+              <input type="tel" id="phone" name="phone" dir="ltr" inputmode="tel" required />
+              <span class="phone-ghost" id="phoneGhost" aria-hidden="true"></span>
+            </span>
           </div>
         </div>
         <div class="field">

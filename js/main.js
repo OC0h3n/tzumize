@@ -225,18 +225,20 @@
 
       form.querySelector("#formSuccess").hidden = false;
       form.reset();
+      form.querySelector("#phone").dispatchEvent(new Event("input")); // איפוס שכבת הרפאים לתבנית
     });
   }
 
   /* ---------- מסכת טלפון: XX-XXX-XXXX, כל ספרה אוכלת X אחד ---------- */
   function initPhoneMask() {
     const input = document.getElementById("phone");
-    if (!input) return;
+    const ghost = document.getElementById("phoneGhost");
+    if (!input || !ghost) return;
     const template = "XX-XXX-XXXX";
     const slots = [];
     for (let i = 0; i < template.length; i++) if (template[i] === "X") slots.push(i);
 
-    function format(digits) {
+    function fullFormat(digits) {
       const chars = template.split("");
       for (let i = 0; i < slots.length; i++) {
         chars[slots[i]] = i < digits.length ? digits[i] : "X";
@@ -244,14 +246,24 @@
       return chars.join("");
     }
 
-    input.addEventListener("input", () => {
-      input.setCustomValidity("");
+    function render() {
       const digits = (input.value.match(/\d/g) || []).join("").slice(0, slots.length);
-      if (!digits.length) { input.value = ""; return; } // ריק => חוזר ל-placeholder
-      input.value = format(digits);
-      const caret = slots[digits.length - 1] + 1; // הצמדת הסמן אחרי הספרה האחרונה
-      input.setSelectionRange(caret, caret);
-    });
+      if (!digits.length) {
+        input.value = "";
+        ghost.innerHTML = `<span class="g-rest">${template}</span>`; // ריק => כל התבנית אפורה
+        return;
+      }
+      const full = fullFormat(digits);
+      const cut = slots[digits.length - 1] + 1;  // עד אחרי הספרה האחרונה (כולל מקפים שביניהן)
+      const typed = full.slice(0, cut);
+      input.value = typed;                       // התיבה מכילה רק את מה שהוקלד — בצבע בהיר
+      // רפאים: עותק שקוף של מה שהוקלד (לרוחב) + שארית ה-X-ים באפור עמום קבוע
+      ghost.innerHTML = `<span class="g-typed">${typed}</span><span class="g-rest">${full.slice(cut)}</span>`;
+      input.setSelectionRange(typed.length, typed.length);
+    }
+
+    input.addEventListener("input", () => { input.setCustomValidity(""); render(); });
+    render(); // מצב התחלתי — מציג את התבנית האפורה
   }
 
   /* ---------- Init ---------- */
