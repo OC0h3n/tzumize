@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" data-i18n="meta.description" />
+  <title data-i18n="meta.title">המרצה | הרצאות שמשאירות חותם</title>
+
+  <!-- Google Fonts: Heebo (Hebrew) + Poppins (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== Animated background blobs ===== -->
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+  </div>
+
+  <!-- ===== Navbar ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-mark">✦</span>
+        <span data-i18n="nav.brand">שם המרצה</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#about" data-i18n="nav.about">אודות</a>
+        <a href="#lectures" data-i18n="nav.lectures">הרצאות</a>
+        <a href="#reels" data-i18n="nav.reels">רגעים</a>
+        <a href="#pricing" data-i18n="nav.pricing">מחירים</a>
+        <a href="#contact" data-i18n="nav.contact">צור קשר</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+          <span class="lang-toggle__current">EN</span>
+        </button>
+        <a href="#contact" class="btn btn--primary nav__cta" data-i18n="nav.book">הזמנת הרצאה</a>
+        <button class="nav__burger" id="navBurger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="container hero__inner">
+      <p class="hero__eyebrow reveal" data-i18n="hero.eyebrow">הרצאות העשרה • השראה • תוכן</p>
+      <h1 class="hero__title reveal" data-i18n="hero.title">הרצאות שמשאירות חותם.</h1>
+      <p class="hero__subtitle reveal" data-i18n="hero.subtitle">
+        חוויה שמשלבת ידע, רגש והומור — מותאמת לנוער ולמבוגרים, בכל מסגרת.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#contact" class="btn btn--primary btn--lg" data-i18n="hero.ctaBook">הזמינו הרצאה</a>
+        <a href="#reels" class="btn btn--ghost btn--lg" data-i18n="hero.ctaWatch">▶ צפו ברגעים</a>
+      </div>
+
+      <div class="hero__stats reveal">
+        <div class="stat">
+          <span class="stat__num" data-count="500">0</span><span class="stat__plus">+</span>
+          <span class="stat__label" data-i18n="hero.stat1">הרצאות</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="50000">0</span><span class="stat__plus">+</span>
+          <span class="stat__label" data-i18n="hero.stat2">מאזינים</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-count="12">0</span><span class="stat__plus">+</span>
+          <span class="stat__label" data-i18n="hero.stat3">שנות ניסיון</span>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="scroll down"><span></span></a>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section class="section about" id="about">
+    <div class="container about__grid">
+      <div class="about__photo reveal">
+        <div class="about__photo-frame">
+          <!-- TODO: החליפו בתמונת המרצה — assets/images/speaker.jpg -->
+          <div class="about__photo-placeholder">📷</div>
+        </div>
+      </div>
+      <div class="about__text reveal">
+        <span class="section__eyebrow" data-i18n="about.eyebrow">קצת עליי</span>
+        <h2 class="section__title" data-i18n="about.title">מי עומד מאחורי הבמה</h2>
+        <p data-i18n="about.p1">
+          כבר למעלה מעשור אני עולה לבמות מול קהלים מגוונים — מבני נוער ועד מנהלים בכירים.
+          ההרצאות שלי משלבות סיפור אישי, תובנות מעשיות והרבה אנרגיה, ומשאירות את הקהל עם משהו לקחת הביתה.
+        </p>
+        <p data-i18n="about.p2">
+          כל הרצאה נבנית בהתאמה אישית לקהל ולמטרה — בין אם זו הרצאת מוטיבציה לנוער, יום גיבוש לארגון, או ערב העשרה קהילתי.
+        </p>
+        <ul class="about__list">
+          <li data-i18n="about.li1">✦ הרצאות מותאמות אישית לכל קהל</li>
+          <li data-i18n="about.li2">✦ שילוב סיפור, הומור ותוכן מעשי</li>
+          <li data-i18n="about.li3">✦ ניסיון מול אלפי מאזינים בכל הארץ</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Lectures ===== -->
+  <section class="section lectures" id="lectures">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="lectures.eyebrow">מה אני מעביר</span>
+        <h2 class="section__title" data-i18n="lectures.title">ההרצאות שלי</h2>
+        <p class="section__sub" data-i18n="lectures.sub">מבחר נושאים — לחצו כדי לקרוא עוד, וצרו קשר להזמנה.</p>
+      </div>
+
+      <div class="cards" id="lecturesGrid">
+        <!-- כרטיסים מוזרקים מ-translations.js כדי שיהיו דו-לשוניים -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reels ===== -->
+  <section class="section reels" id="reels">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="reels.eyebrow">טעימה מהבמה</span>
+        <h2 class="section__title" data-i18n="reels.title">רגעים מתוך ההרצאות</h2>
+        <p class="section__sub" data-i18n="reels.sub">קליפים קצרים שנותנים טעימה מהאנרגיה. (החליפו בקבצי הווידאו שלכם)</p>
+      </div>
+
+      <div class="reels__grid" id="reelsGrid">
+        <!-- כרטיסי רילס מוזרקים מ-main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section class="section pricing" id="pricing">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="pricing.eyebrow">חבילות והזמנה</span>
+        <h2 class="section__title" data-i18n="pricing.title">מחירון הרצאות</h2>
+        <p class="section__sub" data-i18n="pricing.sub">מחירים מעודכנים. ניתן לשלב מספר הרצאות בהנחה — דברו איתי.</p>
+      </div>
+
+      <div class="pricing__grid" id="pricingGrid">
+        <!-- כרטיסי מחיר מוזרקים מ-main.js -->
+      </div>
+
+      <p class="pricing__note reveal" data-i18n="pricing.note">
+        💡 הנחות: הזמנת חבילה של 3 הרצאות ומעלה — 15% הנחה. מוסדות חינוך ועמותות — צרו קשר למחיר מיוחד.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="section contact" id="contact">
+    <div class="container contact__grid">
+      <div class="contact__intro reveal">
+        <span class="section__eyebrow" data-i18n="contact.eyebrow">בואו נדבר</span>
+        <h2 class="section__title" data-i18n="contact.title">הזמנת הרצאה</h2>
+        <p data-i18n="contact.sub">השאירו פרטים ואחזור אליכם בהקדם, או שלחו הודעה ישירות בוואטסאפ.</p>
+        <a class="btn btn--whatsapp" id="whatsappLink" href="#" target="_blank" rel="noopener">
+          <span>💬</span> <span data-i18n="contact.whatsapp">שליחת הודעה בוואטסאפ</span>
+        </a>
+      </div>
+
+      <form class="contact__form reveal" id="bookingForm" novalidate>
+        <div class="field">
+          <label for="name" data-i18n="contact.name">שם מלא</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="phone" data-i18n="contact.phone">טלפון</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+        <div class="field">
+          <label for="type" data-i18n="contact.type">סוג הרצאה</label>
+          <select id="type" name="type">
+            <option value="youth" data-i18n="contact.optYouth">הרצאה לנוער</option>
+            <option value="adults" data-i18n="contact.optAdults">הרצאה למבוגרים</option>
+            <option value="custom" data-i18n="contact.optCustom">מותאם אישית</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message" data-i18n="contact.message">הודעה</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--lg" data-i18n="contact.send">שליחה</button>
+        <p class="contact__success" id="formSuccess" data-i18n="contact.success" hidden>תודה! נחזור אליכם בהקדם 🙌</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__logo-mark">✦</span>
+        <span data-i18n="nav.brand">שם המרצה</span>
+      </div>
+      <div class="footer__contact">
+        <a href="tel:+972500000000" data-i18n="footer.phone">📞 050-000-0000</a>
+        <a href="mailto:hello@example.com">✉ hello@example.com</a>
+      </div>
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+      </div>
+    </div>
+    <p class="footer__copy" data-i18n="footer.copy">© 2026 שם המרצה. כל הזכויות שמורות.</p>
+  </footer>
+
+  <!-- Floating WhatsApp button -->
+  <a class="fab-whatsapp" id="fabWhatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script src="js/translations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
