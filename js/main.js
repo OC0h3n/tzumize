@@ -210,7 +210,7 @@
       const typeText = typeSel.options[typeSel.selectedIndex].textContent;
       // חילוץ הספרות בלבד (בלי מקפים/X) + ודא שכל הספרות מולאו
       const rawDigits = String(data.get("phone") || "").replace(/\D/g, "");
-      if (rawDigits.length < 9) {
+      if (rawDigits.length !== 9) {
         const pin = form.querySelector("#phone");
         pin.setCustomValidity(lang === "he" ? "אנא מלאו את כל ספרות הטלפון" : "Please fill in the full phone number");
         pin.reportValidity();

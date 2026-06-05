@@ -35,13 +35,13 @@ const TRANSLATIONS = {
     "about.li2": "✦ שילוב סיפור, הומור ותוכן מעשי",
     "about.li3": "✦ ניסיון מול אלפי מאזינים בכל הארץ",
 
-    "lectures.eyebrow": "מה אני מעביר",
+    "lectures.eyebrow": "מה אני מעבירה",
     "lectures.title": "ההרצאות שלי",
-    "lectures.sub": "מבחר נושאים — לחצו כדי לקרוא עוד, וצרו קשר להזמנה.",
+    "lectures.sub": "מבחר נושאים — צרו קשר להזמנה.",
 
     "reels.eyebrow": "טעימה מהבמה",
     "reels.title": "רגעים מתוך ההרצאות",
-    "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה. (החליפו בקבצי הווידאו שלכם)",
+    "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה.",
     "reels.play": "נגן",
     "reels.soon": "בקרוב",
 
@@ -112,11 +112,11 @@ const TRANSLATIONS = {
 
     "lectures.eyebrow": "What I deliver",
     "lectures.title": "My Lectures",
-    "lectures.sub": "A selection of topics — click to read more, and get in touch to book.",
+    "lectures.sub": "A selection of topics — get in touch to book.",
 
     "reels.eyebrow": "A taste of the stage",
     "reels.title": "Moments from the talks",
-    "reels.sub": "Short clips that give a taste of the energy. (Replace with your own videos)",
+    "reels.sub": "Short clips that give a taste of the energy.",
     "reels.play": "Play",
     "reels.soon": "Coming soon",
 
