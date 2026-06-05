@@ -15,7 +15,8 @@
 - `css/styles.css` — כל העיצוב.
 - `js/translations.js` — **מקור האמת לתוכן.** כאן עורכים טקסטים, כרטיסים, מחירים, רילסים ופרטי קשר.
 - `js/main.js` — לוגיקה: החלפת שפה, הזרקת תוכן דינמי, אנימציות, טופס.
-- `assets/images/`, `assets/videos/` — מדיה (כרגע placeholders עם `.gitkeep`).
+- `assets/images/`, `assets/videos/` — מדיה. כרגע: `speaker.jpg` (תמונת המרצה), `reel1–reel4.mp4` (רילסים) ו-`reel1–reel4.jpg` (פוסטרים).
+- `assets/source/` — **לא נכלל ב-git** (`.gitignore`). כאן יושב קובץ ההרצאה המלא הגדול וקבצי ביניים (אודיו, תמלול, סקריפטים, תבניות עיצוב).
 
 ## עקרונות עבודה בפרויקט הזה
 - **כל תוכן נערך ב-`js/translations.js`** — תמיד בשתי השפות (`he` ו-`en`) יחד. אל תשאירו שפה אחת מאחור.
@@ -25,6 +26,34 @@
 - מספר וואטסאפ: בפורמט בינלאומי **בלי** `+` (למשל `972501234567`), בתוך `CONTACT.whatsapp`.
 - מחיר `null` ב-`PRICING` => מוצג "בהתאמה"/"Custom". `popular: true` => תג "הכי פופולרי".
 - Placeholders שצריך להחליף מסומנים בקוד בהערות `TODO`.
+
+## תמונת המרצה (`speaker`)
+- האתר מפנה ל-`assets/images/speaker.jpg` בכמה מקומות (`index.html`, תגי og/twitter).
+- **חובה שם מדויק:** `speaker.jpg` — אותיות קטנות וסיומת `.jpg` (לא `.jpeg`, לא `Speaker.JPG`).
+  אם מחליפים תמונה ושומרים אותה כ-`.jpeg` — האתר לא ימצא אותה. לשנות שם ל-`speaker.jpg`.
+
+## רילסים — חיתוך מתוך הרצאה מלאה (התהליך שעשינו)
+מטרה: לקחת סרטון הרצאה ארוך → לחתוך רגעים חזקים → רילסים אנכיים מעוצבים לקטע "רגעים".
+
+**כלים שהותקנו על המחשב (פעם אחת):** `ffmpeg` (winget: Gyan.FFmpeg), `faster-whisper`
+(pip) לתמלול, ו-`Pillow`+`python-bidi` (pip) לעיצוב טקסט עברי. לתמלול מהיר על GPU
+התקנו גם `nvidia-cublas-cu12 nvidia-cudnn-cu12 nvidia-cuda-runtime-cu12` (יש RTX 3060 Ti);
+ה-PATH של winget לא נטען ב-shell, אז קוראים ל-ffmpeg בנתיב המלא תחת
+`%LOCALAPPDATA%\Microsoft\WinGet\Packages\Gyan.FFmpeg_...\bin`.
+
+**הזרימה:**
+1. שמים את ההרצאה ב-`assets/source/` (לא דרך הצ'אט — Claude קורא ישירות מהדיסק).
+2. מחלצים אודיו ומתמללים לעברית עם חותמות זמן (`assets/source/transcribe.py` → `transcript.txt/.json`, רץ על GPU).
+3. קוראים בתמלול, בוחרים רגעים חזקים, ומאמתים מיסגור עם דגימת פריימים.
+4. מעצבים תבנית לכל רילס: `assets/source/make_frames.py` מייצר PNG שקוף (720×1280)
+   בצבעי המותג — רקע כהה מדורג, חלון וידאו 660×371 עם פינות מעוגלות ומסגרת סגולה,
+   ציטוט גדול לבן מתחת, פס גרדיאנט סגול→תכלת בתחתית. (עברית מטופלת עם `python-bidi`.)
+5. מרכיבים: `ffmpeg` משכבב את הווידאו (scale 660×371) לתוך חלון התבנית (overlay ב-y=300),
+   פלט `assets/videos/reelN.mp4` (H.264, faststart) + פוסטר `assets/images/reelN.jpg`.
+6. כותרות הרילסים (דו-לשוני) ב-`REELS` בתוך `js/translations.js`.
+
+**לחזרה על התהליך / שינוי רגעים:** לערוך טווחי הזמן וטקסטי הציטוטים בלולאת ה-`ffmpeg`
+וב-`make_frames.py`, ולהריץ שוב. התמלול המלא שמור ב-`assets/source/transcript.txt`.
 
 ## עבודה עם Git ו-GitHub
 - ריפו מרוחק ב-GitHub תחת חשבון **OC0h3n** (פרוטוקול HTTPS, דרך `gh`).

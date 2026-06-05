@@ -41,7 +41,7 @@ const TRANSLATIONS = {
 
     "reels.eyebrow": "טעימה מהבמה",
     "reels.title": "רגעים מתוך ההרצאות",
-    "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה. (החליפו בקבצי הווידאו שלכם)",
+    "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה ומהמסר.",
     "reels.play": "נגן",
     "reels.soon": "בקרוב",
 
@@ -116,7 +116,7 @@ const TRANSLATIONS = {
 
     "reels.eyebrow": "A taste of the stage",
     "reels.title": "Moments from the talks",
-    "reels.sub": "Short clips that give a taste of the energy. (Replace with your own videos)",
+    "reels.sub": "Short clips that give a taste of the energy and the message.",
     "reels.play": "Play",
     "reels.soon": "Coming soon",
 
@@ -206,10 +206,10 @@ const PRICING = [
    אפשר גם תמונת תצוגה: reel1.jpg וכו' בתיקייה assets/images/.
    ---------------------------------------------------------------- */
 const REELS = [
-  { src: "assets/videos/reel1.mp4", poster: "assets/images/reel1.jpg", title: { he: "רגע מהבמה #1", en: "Stage moment #1" } },
-  { src: "assets/videos/reel2.mp4", poster: "assets/images/reel2.jpg", title: { he: "רגע מהבמה #2", en: "Stage moment #2" } },
-  { src: "assets/videos/reel3.mp4", poster: "assets/images/reel3.jpg", title: { he: "רגע מהבמה #3", en: "Stage moment #3" } },
-  { src: "assets/videos/reel4.mp4", poster: "assets/images/reel4.jpg", title: { he: "רגע מהבמה #4", en: "Stage moment #4" } }
+  { src: "assets/videos/reel1.mp4", poster: "assets/images/reel1.jpg", title: { he: "זמן לא מרפא כלום", en: "Time heals nothing" } },
+  { src: "assets/videos/reel2.mp4", poster: "assets/images/reel2.jpg", title: { he: "כל יום זה פחות יום", en: "Every day is one day less" } },
+  { src: "assets/videos/reel3.mp4", poster: "assets/images/reel3.jpg", title: { he: "הרגע שהכל התנפץ", en: "When everything shattered" } },
+  { src: "assets/videos/reel4.mp4", poster: "assets/images/reel4.jpg", title: { he: "והחיוך שלי חזר", en: "And my smile came back" } }
 ];
 
 /* ----------------------------------------------------------------

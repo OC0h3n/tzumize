@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 .claude/
+
+# קובץ ההרצאה המלא וקבצי ביניים של תמלול — ענקיים, לא נדחפים
+assets/source/
