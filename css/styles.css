@@ -785,7 +785,7 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
     padding: 2rem;
     z-index: 100;
   }
-  html[dir="rtl"] .nav__links { inset-inline-end: auto; inset-inline-start: 0; transform: translateX(-100%); }
+  html[dir="rtl"] .nav__links { inset-inline-end: auto; inset-inline-start: auto; right: auto; left: 0; transform: translateX(-100%); }
   .nav__links.open { transform: translateX(0); }
   .nav__links a { font-size: 1.15rem; }
   .nav__burger { display: flex; }
