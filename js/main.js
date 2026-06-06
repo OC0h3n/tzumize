@@ -39,6 +39,7 @@
     renderLectures();
     renderPricing();
     renderReels();
+    renderTestimonials();
     updateWhatsapp();
   }
 
@@ -122,6 +123,27 @@
         video.play();
       });
     });
+    observeReveals(grid);
+  }
+
+  /* ---------- המלצות ---------- */
+  function renderTestimonials() {
+    const grid = document.getElementById("testimonialsGrid");
+    if (!grid) return;
+    const items = TRANSLATIONS[lang]["cards.testimonials"] || [];
+    grid.innerHTML = items.map((t) => `
+      <div class="testimonial reveal">
+        <div class="testimonial__stars">★★★★★</div>
+        <span class="testimonial__quote">"</span>
+        <p class="testimonial__text">${t.quote}</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">${t.initials}</div>
+          <div>
+            <div class="testimonial__name">${t.name}</div>
+            <div class="testimonial__role">${t.role} · ${t.org}</div>
+          </div>
+        </div>
+      </div>`).join("");
     observeReveals(grid);
   }
 
