@@ -202,20 +202,37 @@
     const burger = document.getElementById("navBurger");
     const links = document.getElementById("navLinks");
 
+    const overlay = document.createElement("div");
+    overlay.className = "nav__overlay";
+    document.body.appendChild(overlay);
+
+    function closeNav() {
+      burger.classList.remove("open");
+      links.classList.remove("open");
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
     window.addEventListener("scroll", () => {
       nav.classList.toggle("scrolled", window.scrollY > 40);
     }, { passive: true });
 
     burger.addEventListener("click", () => {
-      burger.classList.toggle("open");
+      const isOpen = burger.classList.toggle("open");
       links.classList.toggle("open");
+      overlay.classList.toggle("active", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
+
+    overlay.addEventListener("click", closeNav);
+
     links.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        burger.classList.remove("open");
-        links.classList.remove("open");
-      })
+      a.addEventListener("click", closeNav)
     );
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
   }
 
   /* ---------- טופס הזמנה ---------- */
