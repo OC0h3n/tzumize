@@ -17,7 +17,9 @@ const TRANSLATIONS = {
     "nav.pricing": "מחירים",
     "nav.contact": "צור קשר",
     "nav.book": "הזמנת הרצאה",
+    "nav.testimonials": "המלצות",
 
+    "hero.badge": "🎤 מרצה ומנחה",
     "hero.eyebrow": "הרצאות העשרה • השראה • תוכן",
     "hero.title": "הרצאות שמשאירות חותם.",
     "hero.subtitle": "חוויה שמשלבת ידע, רגש והומור — מותאמת לנוער ולמבוגרים, בכל מסגרת.",
@@ -35,15 +37,19 @@ const TRANSLATIONS = {
     "about.li2": "✦ שילוב סיפור, הומור ותוכן מעשי",
     "about.li3": "✦ ניסיון מול אלפי מאזינים בכל הארץ",
 
-    "lectures.eyebrow": "מה אני מעביר",
+    "lectures.eyebrow": "מה אני מעבירה",
     "lectures.title": "ההרצאות שלי",
-    "lectures.sub": "מבחר נושאים — לחצו כדי לקרוא עוד, וצרו קשר להזמנה.",
+    "lectures.sub": "מבחר נושאים — צרו קשר להזמנה.",
 
     "reels.eyebrow": "טעימה מהבמה",
     "reels.title": "רגעים מתוך ההרצאות",
     "reels.sub": "קליפים קצרים שנותנים טעימה מהאנרגיה ומהמסר.",
     "reels.play": "נגן",
     "reels.soon": "בקרוב",
+
+    "testimonials.eyebrow": "מה אומרים עלי",
+    "testimonials.title": "קולות מהקהל",
+    "testimonials.sub": "ארגונים, בתי ספר ועמותות שכבר חוו את ההרצאה — בדברים שלהם.",
 
     "pricing.eyebrow": "חבילות והזמנה",
     "pricing.title": "מחירון הרצאות",
@@ -52,6 +58,10 @@ const TRANSLATIONS = {
     "pricing.cta": "להזמנה",
     "pricing.popular": "הכי פופולרי",
     "pricing.from": "החל מ-",
+
+    "cta.title": "מוכנים להרים את האירוע הבא?",
+    "cta.sub": "בואו נבנה ביחד חוויה שהקהל לא ישכח.",
+    "cta.btn": "צרו קשר עכשיו",
 
     "contact.eyebrow": "בואו נדבר",
     "contact.title": "הזמנת הרצאה",
@@ -79,6 +89,13 @@ const TRANSLATIONS = {
       { icon: "❤️", title: "מערכות יחסים", desc: "תקשורת, הקשבה וחיבור אמיתי בין אנשים.", tag: "מבוגרים" },
       { icon: "🌍", title: "עולם משתנה", desc: "להתאים את עצמנו לעידן הטכנולוגי המהיר.", tag: "כללי" }
     ]
+    ,
+
+    "cards.testimonials": [
+      { quote: "ציפינו להרצאה טובה, קיבלנו חוויה שלמה. מאיה מצליחה לגעת בלב מבלי לאבד אף שנייה את תשומת הלב של הקהל.", name: "מיכל לוי", role: "רכזת חינוך", org: "עיריית רמת גן", initials: "מ" },
+      { quote: "יום הגיבוש שלנו קיבל מימד חדש לגמרי. ההרצאה שילבה הומור, תוכן ממשי וכלים שאנשי הצוות לוקחים עד היום.", name: "דרור כהן", role: "מנהל משאבי אנוש", org: "חברת טכנולוגיה מובילה", initials: "ד" },
+      { quote: "כבר ראיתי הרצאות רבות — זו שונה. מאיה יודעת לקרוא את הקהל ולהתאים את עצמה בדיוק למה שצריך, בדיוק ברגע הנכון.", name: "שרית אברהמי", role: "מנהלת אירועים", org: "עמותת קהילה וחינוך", initials: "ש" }
+    ]
   },
 
   en: {
@@ -92,7 +109,9 @@ const TRANSLATIONS = {
     "nav.pricing": "Pricing",
     "nav.contact": "Contact",
     "nav.book": "Book a Talk",
+    "nav.testimonials": "Reviews",
 
+    "hero.badge": "🎤 Lecturer & Facilitator",
     "hero.eyebrow": "Enrichment • Inspiration • Content",
     "hero.title": "Talks that leave a mark.",
     "hero.subtitle": "An experience blending knowledge, emotion and humor — tailored for teens and adults, in any setting.",
@@ -112,13 +131,17 @@ const TRANSLATIONS = {
 
     "lectures.eyebrow": "What I deliver",
     "lectures.title": "My Lectures",
-    "lectures.sub": "A selection of topics — click to read more, and get in touch to book.",
+    "lectures.sub": "A selection of topics — get in touch to book.",
 
     "reels.eyebrow": "A taste of the stage",
     "reels.title": "Moments from the talks",
     "reels.sub": "Short clips that give a taste of the energy and the message.",
     "reels.play": "Play",
     "reels.soon": "Coming soon",
+
+    "testimonials.eyebrow": "What people say",
+    "testimonials.title": "Voices from the audience",
+    "testimonials.sub": "Organizations, schools and nonprofits that have experienced the talk — in their own words.",
 
     "pricing.eyebrow": "Packages & booking",
     "pricing.title": "Lecture Pricing",
@@ -127,6 +150,10 @@ const TRANSLATIONS = {
     "pricing.cta": "Book now",
     "pricing.popular": "Most popular",
     "pricing.from": "From",
+
+    "cta.title": "Ready to elevate your next event?",
+    "cta.sub": "Let's build an experience together that your audience won't forget.",
+    "cta.btn": "Get in touch now",
 
     "contact.eyebrow": "Let's talk",
     "contact.title": "Book a Lecture",
@@ -152,6 +179,13 @@ const TRANSLATIONS = {
       { icon: "💡", title: "Creative Thinking", desc: "How to develop ideas, break patterns and innovate.", tag: "Youth" },
       { icon: "❤️", title: "Relationships", desc: "Communication, listening and genuine connection between people.", tag: "Adults" },
       { icon: "🌍", title: "A Changing World", desc: "Adapting ourselves to the fast technological era.", tag: "General" }
+    ]
+    ,
+
+    "cards.testimonials": [
+      { quote: "We expected a good talk, we got a full experience. Maya manages to touch hearts without losing the audience's attention for a single second.", name: "Michal Levi", role: "Education Coordinator", org: "Ramat Gan Municipality", initials: "M" },
+      { quote: "Our team day took on a whole new dimension. The talk blended humor, real content and tools that our people still use today.", name: "Dror Cohen", role: "HR Manager", org: "Leading Tech Company", initials: "D" },
+      { quote: "I've seen many talks — this one is different. Maya knows how to read the room and adapt precisely to what's needed, at exactly the right moment.", name: "Sarit Avrahami", role: "Events Manager", org: "Community & Education NGO", initials: "S" }
     ]
   }
 };

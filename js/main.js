@@ -39,6 +39,7 @@
     renderLectures();
     renderPricing();
     renderReels();
+    renderTestimonials();
     updateWhatsapp();
   }
 
@@ -125,6 +126,27 @@
     observeReveals(grid);
   }
 
+  /* ---------- המלצות ---------- */
+  function renderTestimonials() {
+    const grid = document.getElementById("testimonialsGrid");
+    if (!grid) return;
+    const items = TRANSLATIONS[lang]["cards.testimonials"] || [];
+    grid.innerHTML = items.map((t) => `
+      <div class="testimonial reveal">
+        <div class="testimonial__stars">★★★★★</div>
+        <span class="testimonial__quote">"</span>
+        <p class="testimonial__text">${t.quote}</p>
+        <div class="testimonial__author">
+          <div class="testimonial__avatar">${t.initials}</div>
+          <div>
+            <div class="testimonial__name">${t.name}</div>
+            <div class="testimonial__role">${t.role} · ${t.org}</div>
+          </div>
+        </div>
+      </div>`).join("");
+    observeReveals(grid);
+  }
+
   /* ---------- וואטסאפ ---------- */
   function updateWhatsapp() {
     const msg = encodeURIComponent(CONTACT.whatsappMsg[lang]);
@@ -180,20 +202,37 @@
     const burger = document.getElementById("navBurger");
     const links = document.getElementById("navLinks");
 
+    const overlay = document.createElement("div");
+    overlay.className = "nav__overlay";
+    document.body.appendChild(overlay);
+
+    function closeNav() {
+      burger.classList.remove("open");
+      links.classList.remove("open");
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
     window.addEventListener("scroll", () => {
       nav.classList.toggle("scrolled", window.scrollY > 40);
     }, { passive: true });
 
     burger.addEventListener("click", () => {
-      burger.classList.toggle("open");
+      const isOpen = burger.classList.toggle("open");
       links.classList.toggle("open");
+      overlay.classList.toggle("active", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
+
+    overlay.addEventListener("click", closeNav);
+
     links.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        burger.classList.remove("open");
-        links.classList.remove("open");
-      })
+      a.addEventListener("click", closeNav)
     );
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
   }
 
   /* ---------- טופס הזמנה ---------- */
@@ -210,7 +249,7 @@
       const typeText = typeSel.options[typeSel.selectedIndex].textContent;
       // חילוץ הספרות בלבד (בלי מקפים/X) + ודא שכל הספרות מולאו
       const rawDigits = String(data.get("phone") || "").replace(/\D/g, "");
-      if (rawDigits.length < 9) {
+      if (rawDigits.length !== 9) {
         const pin = form.querySelector("#phone");
         pin.setCustomValidity(lang === "he" ? "אנא מלאו את כל ספרות הטלפון" : "Please fill in the full phone number");
         pin.reportValidity();

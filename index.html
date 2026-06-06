@@ -7,22 +7,26 @@
   <title data-i18n="meta.title">מאיה כהן הראל | הרצאות שמשאירות חותם</title>
 
   <!-- ===== Open Graph — תצוגת שיתוף יפה בפייסבוק/וואטסאפ/אינסטגרם ===== -->
-  <!-- TODO: כשהאתר עולה לאוויר, מלאו את הכתובת המלאה בשתי השורות עם "https://...".
-       בלי כתובת מלאה התמונה לא תוצג בשיתוף. -->
+  <!-- TODO לפני העלייה לאוויר: החליפו את שני ה-TODO_SITE_URL בכתובת המלאה של האתר
+       לדוגמה: https://mayacohenharel.co.il
+       og:image ו-twitter:image חייבים להיות URL מלא כדי שתופיע תמונה בשיתוף. -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="מאיה כהן הראל | הרצאות שמשאירות חותם" />
   <meta property="og:description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" />
-  <meta property="og:image" content="assets/images/speaker.jpg" />
-  <meta property="og:url" content="" />
+  <meta property="og:image" content="TODO_SITE_URL/assets/images/speaker.jpg" />
+  <meta property="og:url" content="TODO_SITE_URL" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="מאיה כהן הראל | הרצאות שמשאירות חותם" />
   <meta name="twitter:description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" />
-  <meta name="twitter:image" content="assets/images/speaker.jpg" />
+  <meta name="twitter:image" content="TODO_SITE_URL/assets/images/speaker.jpg" />
 
   <!-- Google Fonts: Heebo (Hebrew) + Poppins (English) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Favicon: ✦ מסמל הלוגו, עובד בכל דפדפן מודרני ללא קובץ נוסף -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -47,6 +51,7 @@
         <a href="#about" data-i18n="nav.about">אודות</a>
         <a href="#lectures" data-i18n="nav.lectures">הרצאות</a>
         <a href="#reels" data-i18n="nav.reels">רגעים</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">המלצות</a>
         <a href="#pricing" data-i18n="nav.pricing">מחירים</a>
         <a href="#contact" data-i18n="nav.contact">צור קשר</a>
       </nav>
@@ -66,6 +71,7 @@
   <!-- ===== Hero ===== -->
   <section class="hero" id="hero">
     <div class="container hero__inner">
+      <span class="hero__badge reveal" data-i18n="hero.badge">🎤 מרצה ומנחה</span>
       <p class="hero__eyebrow reveal" data-i18n="hero.eyebrow">הרצאות העשרה • השראה • תוכן</p>
       <h1 class="hero__title reveal" data-i18n="hero.title">הרצאות שמשאירות חותם.</h1>
       <p class="hero__subtitle reveal" data-i18n="hero.subtitle">
@@ -101,7 +107,7 @@
         <div class="about__photo-frame">
           <!-- כדי להחליף: שימו קובץ בשם speaker.jpg בתיקייה assets/images/ (אותיות קטנות).
                אם הקובץ חסר — יוצג ה-placeholder עם 📷 אוטומטית. -->
-          <img class="about__photo-img" src="assets/images/speaker.jpg" alt="תמונת המרצה"
+          <img class="about__photo-img" src="assets/images/speaker.jpg" alt="מאיה כהן הראל"
                onerror="this.style.display='none'; this.nextElementSibling.hidden=false;" />
           <div class="about__photo-placeholder" hidden>📷</div>
         </div>
@@ -155,6 +161,20 @@
     </div>
   </section>
 
+  <!-- ===== Testimonials ===== -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="testimonials.eyebrow">מה אומרים עלי</span>
+        <h2 class="section__title" data-i18n="testimonials.title">קולות מהקהל</h2>
+        <p class="section__sub" data-i18n="testimonials.sub">ארגונים, בתי ספר ועמותות שכבר חוו את ההרצאה — בדברים שלהם.</p>
+      </div>
+      <div class="testimonials__grid" id="testimonialsGrid">
+        <!-- כרטיסי המלצות מוזרקים מ-main.js -->
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Pricing ===== -->
   <section class="section pricing" id="pricing">
     <div class="container">
@@ -171,6 +191,15 @@
       <p class="pricing__note reveal" data-i18n="pricing.note">
         💡 הנחות: הזמנת חבילה של 3 הרצאות ומעלה — 15% הנחה. מוסדות חינוך ועמותות — צרו קשר למחיר מיוחד.
       </p>
+    </div>
+  </section>
+
+  <!-- ===== CTA Strip ===== -->
+  <section class="cta-strip">
+    <div class="container cta-strip__inner reveal">
+      <h2 class="cta-strip__title" data-i18n="cta.title">מוכנים להרים את האירוע הבא?</h2>
+      <p class="cta-strip__sub" data-i18n="cta.sub">בואו נבנה ביחד חוויה שהקהל לא ישכח.</p>
+      <a href="#contact" class="btn btn--cta" data-i18n="cta.btn">צרו קשר עכשיו</a>
     </div>
   </section>
 
@@ -196,7 +225,7 @@
           <div class="phone-input">
             <span class="phone-input__prefix">+972</span>
             <span class="phone-field">
-              <input type="tel" id="phone" name="phone" dir="ltr" inputmode="tel" required />
+              <input type="tel" id="phone" name="phone" dir="ltr" inputmode="tel" maxlength="11" required />
               <span class="phone-ghost" id="phoneGhost" aria-hidden="true"></span>
             </span>
           </div>

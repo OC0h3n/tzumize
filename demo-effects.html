@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>דמו — Badge & Shimmer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0b0f1f;
+      color: #eef1ff;
+      font-family: "Heebo", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2rem;
+    }
+
+    /* ===== SECTION LABELS ===== */
+    .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #00d4ff;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2.5rem 3rem;
+      min-width: 320px;
+    }
+
+    /* ===== BADGE ===== */
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      padding: 0.45em 1.2em;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #a9b0d0;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.03em;
+    }
+
+    /* ===== SHIMMER TITLE ===== */
+    .hero__title {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(
+        120deg,
+        #ffffff 0%,
+        #c9b8ff 35%,
+        #00d4ff 60%,
+        #c9b8ff 80%,
+        #ffffff 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% auto;
+      animation: titleShimmer 3s linear infinite;
+    }
+
+    @keyframes titleShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ===== WITHOUT SHIMMER (for comparison) ===== */
+    .hero__title--static {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      background: linear-gradient(120deg, #ffffff 0%, #c9b8ff 55%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: #a9b0d0;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    .arrow {
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.2);
+    }
+    .divider {
+      width: 100%;
+      max-width: 400px;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BADGE -->
+  <div class="box">
+    <p class="label">① Badge — תג מזהה</p>
+    <span class="hero__badge">🎤 מרצה ומנחה</span>
+    <p class="subtitle">מופיע מעל הכותרת הראשית · נותן הקשר מיידי</p>
+  </div>
+
+  <!-- SHIMMER vs STATIC -->
+  <div class="box">
+    <p class="label">② Shimmer — ללא אנימציה (ישן)</p>
+    <h2 class="hero__title--static">הרצאות שמשאירות חותם.</h2>
+    <p class="subtitle">גרדיאנט סטטי — יפה אבל דומם</p>
+  </div>
+
+  <div class="arrow">↓</div>
+
+  <div class="box">
+    <p class="label">② Shimmer — עם אנימציה (חדש)</p>
+    <h2 class="hero__title">הרצאות שמשאירות חותם.</h2>
+    <p class="subtitle">אור "גולש" על הטקסט בלי הפסקה · כאן מהיר יותר לדמו</p>
+  </div>
+
+</body>
+</html>
