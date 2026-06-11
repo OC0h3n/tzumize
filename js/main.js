@@ -45,6 +45,9 @@
     renderFaq();
     renderMarquee();
     updateWhatsapp();
+
+    // מודיע ל-effects.js שהשפה הוחלפה (למשל בשביל המילה המתחלפת בהירו)
+    document.dispatchEvent(new CustomEvent("langchange", { detail: { lang } }));
   }
 
   /* ---------- כרטיסי הרצאות ---------- */
@@ -382,6 +385,13 @@
       const success = form.querySelector("#formSuccess");
       success.hidden = false;
       setTimeout(() => { success.hidden = true; }, 7000); // ההודעה נעלמת לבד
+
+      // קונפטי! effects.js מאזין ומפוצץ מהכפתור
+      const sendBtn = form.querySelector("button[type='submit']");
+      const br = sendBtn.getBoundingClientRect();
+      document.dispatchEvent(new CustomEvent("bookingSuccess", {
+        detail: { x: br.left + br.width / 2, y: br.top + br.height / 2 }
+      }));
       form.reset();
       form.querySelector("#phone").dispatchEvent(new Event("input")); // איפוס שכבת הרפאים לתבנית
     });

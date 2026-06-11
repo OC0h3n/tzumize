@@ -22,6 +22,9 @@ const TRANSLATIONS = {
     "hero.badge": "🎤 מרצה ומנחה",
     "hero.eyebrow": "הרצאות העשרה • השראה • תוכן",
     "hero.title": "הרצאות שמשאירות חותם.",
+    // המילה המתחלפת בכותרת (effects.js) — הבסיס + רשימת המילים
+    "hero.titleBase": "הרצאות שמשאירות",
+    "hero.titleWords": ["חותם.", "השראה.", "חיוך.", "אנרגיה."],
     "hero.subtitle": "חוויה שמשלבת ידע, רגש והומור — מותאמת לנוער ולמבוגרים, בכל מסגרת.",
     "hero.ctaBook": "הזמינו הרצאה",
     "hero.ctaWatch": "▶ צפו ברגעים",
@@ -148,6 +151,8 @@ const TRANSLATIONS = {
     "hero.badge": "🎤 Lecturer & Facilitator",
     "hero.eyebrow": "Enrichment • Inspiration • Content",
     "hero.title": "Talks that leave a mark.",
+    "hero.titleBase": "Talks that leave a",
+    "hero.titleWords": ["mark.", "spark.", "smile.", "memory."],
     "hero.subtitle": "An experience blending knowledge, emotion and humor — tailored for teens and adults, in any setting.",
     "hero.ctaBook": "Book a Lecture",
     "hero.ctaWatch": "▶ Watch Moments",

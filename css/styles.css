@@ -959,6 +959,64 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
 .to-top.show { opacity: 1; visibility: visible; transform: none; }
 .to-top:hover { background: var(--primary); color: #fff; }
 
+/* ---------- אפקטים (effects.js) ---------- */
+/* שדה החלקיקים — מעל ה-blobs (z -2), מתחת לתוכן */
+.fx-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* זוהר רך שעוקב אחרי העכבר */
+.cursor-glow {
+  position: fixed;
+  top: -260px;
+  left: -260px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.10), rgba(0, 212, 255, 0.04) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* קנבס הקונפטי — מעל הכול, לא חוסם לחיצות */
+.fx-confetti {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* זוהר נקודתי שעוקב אחרי הסמן בתוך כרטיסים (tilt) */
+.about__photo-frame { position: relative; }
+.card::after, .price-card::after, .testimonial::after, .step::after, .about__photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.09), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.fx-hover::after { opacity: 1; }
+
+/* המילה המתחלפת בהירו + סמן הקלדה מהבהב */
+.rotate-word { display: inline-block; min-width: 0.5ch; }
+.rotate-caret {
+  display: inline-block;
+  width: 0.07em;
+  height: 0.82em;
+  margin-inline-start: 0.08em;
+  background: var(--gradient);
+  border-radius: 99px;
+  vertical-align: -0.06em;
+  animation: caretBlink 1s steps(2) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
@@ -1021,6 +1079,8 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
 /* ---------- Responsive — phone (≤540px) ---------- */
 @media (max-width: 540px) {
   .hero { padding-block: 110px 50px; }
+  /* שומר גובה לכותרת בזמן שהמילה המתחלפת ריקה — מונע קפיצת שורות */
+  .hero__title { min-height: 2.2em; }
   .hero__badge { font-size: 0.78rem; padding: 0.38em 0.9em; }
   .hero__stats { gap: 0.8rem; }
   .stat__num, .stat__plus { font-size: 1.8rem; }

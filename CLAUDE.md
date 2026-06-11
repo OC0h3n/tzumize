@@ -19,6 +19,10 @@
 - `css/styles.css` — כל העיצוב.
 - `js/translations.js` — **מקור האמת לתוכן.** כאן עורכים טקסטים, כרטיסים, מחירים, רילסים ופרטי קשר.
 - `js/main.js` — לוגיקה: החלפת שפה, הזרקת תוכן דינמי, אנימציות, טופס.
+- `js/effects.js` — אפקטים מתקדמים: חלקיקים, tilt תלת-ממדי, כפתורים מגנטיים, מילה
+  מתחלפת בהירו (`hero.titleBase`/`hero.titleWords`), פרלקסה וקונפטי. מאזין לאירועים
+  `langchange` ו-`bookingSuccess` ש-main.js משדר. כבוי ב-prefers-reduced-motion;
+  אפקטי עכבר רק ב-pointer:fine.
 - `assets/images/`, `assets/videos/` — מדיה. כרגע: `speaker.jpg` (תמונת המרצה), `reel1–reel4.mp4` (רילסים) ו-`reel1–reel4.jpg` (פוסטרים).
 - `assets/source/` — **לא נכלל ב-git** (`.gitignore`). כאן יושב קובץ ההרצאה המלא הגדול וקבצי ביניים (אודיו, תמלול, סקריפטים, תבניות עיצוב).
 
