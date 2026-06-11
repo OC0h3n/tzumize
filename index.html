@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" data-i18n="meta.description" />
+  <meta name="theme-color" content="#0b0f1f" />
   <title data-i18n="meta.title">מאיה כהן הראל | הרצאות שמשאירות חותם</title>
 
   <!-- ===== Open Graph — תצוגת שיתוף יפה בפייסבוק/וואטסאפ/אינסטגרם ===== -->
@@ -11,6 +12,8 @@
        לדוגמה: https://mayacohenharel.co.il
        og:image ו-twitter:image חייבים להיות URL מלא כדי שתופיע תמונה בשיתוף. -->
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="מאיה כהן הראל" />
   <meta property="og:title" content="מאיה כהן הראל | הרצאות שמשאירות חותם" />
   <meta property="og:description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" />
   <meta property="og:image" content="TODO_SITE_URL/assets/images/speaker.jpg" />
@@ -29,8 +32,33 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
 
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- ===== Structured data (SEO) — עוזר לגוגל להציג את מאיה כתוצאה עשירה ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "מאיה כהן הראל",
+    "jobTitle": "מרצה ומנחה",
+    "description": "הרצאות העשרה והשראה לנוער ולמבוגרים — מוטיבציה, חוסן מנטלי, מנהיגות ועוד.",
+    "telephone": "+972-52-854-3393",
+    "email": "mayach22@gmail.com",
+    "image": "assets/images/speaker.jpg",
+    "sameAs": [
+      "https://instagram.com/mayach22",
+      "https://www.facebook.com/mayach22"
+    ],
+    "knowsAbout": ["הרצאות מוטיבציה", "חוסן מנטלי", "מנהיגות", "חשיבה יצירתית"]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- קישור דילוג לנגישות — מופיע רק במיקוד מקלדת -->
+  <a href="#hero" class="skip-link" data-i18n="a11y.skip">דלגו לתוכן הראשי</a>
+
+  <!-- סרגל התקדמות קריאה בראש הדף -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ===== Animated background blobs ===== -->
   <div class="bg-blobs" aria-hidden="true">
@@ -61,7 +89,7 @@
           <span class="lang-toggle__current">EN</span>
         </button>
         <a href="#contact" class="btn btn--primary nav__cta" data-i18n="nav.book">הזמנת הרצאה</a>
-        <button class="nav__burger" id="navBurger" aria-label="Menu">
+        <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -108,6 +136,7 @@
           <!-- כדי להחליף: שימו קובץ בשם speaker.jpg בתיקייה assets/images/ (אותיות קטנות).
                אם הקובץ חסר — יוצג ה-placeholder עם 📷 אוטומטית. -->
           <img class="about__photo-img" src="assets/images/speaker.jpg" alt="מאיה כהן הראל"
+               loading="lazy" decoding="async"
                onerror="this.style.display='none'; this.nextElementSibling.hidden=false;" />
           <div class="about__photo-placeholder" hidden>📷</div>
         </div>
@@ -130,6 +159,13 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== Audience marquee — פס נע של סוגי קהלים ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack">
+      <!-- פריטים מוזרקים מ-main.js (כפול, ללולאה אינסופית חלקה) -->
+    </div>
+  </div>
 
   <!-- ===== Lectures ===== -->
   <section class="section lectures" id="lectures">
@@ -175,6 +211,20 @@
     </div>
   </section>
 
+  <!-- ===== Process — איך זה עובד ===== -->
+  <section class="section process" id="process">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="process.eyebrow">מהזמנה לבמה</span>
+        <h2 class="section__title" data-i18n="process.title">איך זה עובד?</h2>
+        <p class="section__sub" data-i18n="process.sub">ארבעה צעדים פשוטים — מהפנייה הראשונה ועד הרצאה שהקהל זוכר.</p>
+      </div>
+      <div class="process__grid" id="processGrid">
+        <!-- שלבים מוזרקים מ-main.js -->
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Pricing ===== -->
   <section class="section pricing" id="pricing">
     <div class="container">
@@ -191,6 +241,20 @@
       <p class="pricing__note reveal" data-i18n="pricing.note">
         💡 הנחות: הזמנת חבילה של 3 הרצאות ומעלה — 15% הנחה. מוסדות חינוך ועמותות — צרו קשר למחיר מיוחד.
       </p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ — שאלות נפוצות ===== -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section__head reveal">
+        <span class="section__eyebrow" data-i18n="faq.eyebrow">יש שאלות?</span>
+        <h2 class="section__title" data-i18n="faq.title">שאלות נפוצות</h2>
+        <p class="section__sub" data-i18n="faq.sub">כל מה שחשוב לדעת לפני שמזמינים — ואם משהו חסר, פשוט תשאלו.</p>
+      </div>
+      <div class="faq__list" id="faqList">
+        <!-- שאלות מוזרקות מ-main.js -->
+      </div>
     </div>
   </section>
 
@@ -269,6 +333,9 @@
 
   <!-- Floating WhatsApp button -->
   <a class="fab-whatsapp" id="fabWhatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <!-- כפתור חזרה למעלה — מופיע אחרי גלילה -->
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 
   <script src="js/translations.js"></script>
   <script src="js/main.js"></script>

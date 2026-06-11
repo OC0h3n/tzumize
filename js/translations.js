@@ -78,7 +78,41 @@ const TRANSLATIONS = {
     "contact.success": "תודה! נחזור אליכם בהקדם 🙌",
 
     "footer.phone": "📞 052-854-3393",
-    "footer.copy": "© 2026 מאיה כהן הראל. כל הזכויות שמורות.",
+    "footer.copy": "© {year} מאיה כהן הראל. כל הזכויות שמורות.",
+
+    "a11y.skip": "דלגו לתוכן הראשי",
+
+    "process.eyebrow": "מהזמנה לבמה",
+    "process.title": "איך זה עובד?",
+    "process.sub": "ארבעה צעדים פשוטים — מהפנייה הראשונה ועד הרצאה שהקהל זוכר.",
+
+    "faq.eyebrow": "יש שאלות?",
+    "faq.title": "שאלות נפוצות",
+    "faq.sub": "כל מה שחשוב לדעת לפני שמזמינים — ואם משהו חסר, פשוט תשאלו.",
+
+    // פס הקהלים הנע — הוסיפו/הסירו פריטים בחופשיות
+    "marquee.items": [
+      "🏫 בתי ספר", "🏢 חברות וארגונים", "🏛️ עיריות ורשויות", "⚜️ תנועות נוער",
+      "🎗️ עמותות", "🎓 מכללות", "👥 ימי גיבוש", "🌟 ערבי קהילה", "🎤 כנסים ואירועים"
+    ],
+
+    // שלבי "איך זה עובד"
+    "cards.process": [
+      { icon: "📞", title: "שיחת היכרות", desc: "מספרים לי על הקהל, המטרה והאירוע — בטלפון או בוואטסאפ, בלי התחייבות." },
+      { icon: "🎯", title: "התאמה אישית", desc: "בונים יחד את ההרצאה המדויקת — נושא, אורך, דגשים וסיפורים שמתאימים בדיוק לכם." },
+      { icon: "🎤", title: "ההרצאה עצמה", desc: "מגיעה מוכנה, מחוברת ומחויכת — ונותנת לקהל שלכם חוויה שלא שוכחים." },
+      { icon: "💬", title: "ליווי והמשך", desc: "נשארת זמינה גם אחרי — למשוב, חומרים נלווים והרצאות המשך." }
+    ],
+
+    // שאלות נפוצות
+    "cards.faq": [
+      { q: "כמה זמן נמשכת הרצאה?", a: "הרצאה סטנדרטית נמשכת 60 דקות, ולמבוגרים אפשר להאריך עד 90 דקות כולל שאלות ותשובות. הכל גמיש ומתואם מראש לפי האירוע שלכם." },
+      { q: "לאילו קהלים ההרצאות מתאימות?", a: "מבני נוער בחטיבות ותיכונים ועד צוותים בארגונים, עיריות, עמותות וערבי קהילה. כל הרצאה מותאמת מראש לגיל, לרקע ולמטרה של הקהל." },
+      { q: "האם אתם מגיעים לכל הארץ?", a: "כן! ההרצאות מתקיימות בכל רחבי הארץ. לאירועים מרוחקים ייתכן תיאום נסיעות — נסגור הכל מראש בשיחה." },
+      { q: "מה צריך להכין מבחינת ציוד?", a: "בסך הכל מקרן או מסך, מערכת הגברה ומיקרופון. אני מגיעה עם המצגת והסרטונים — ואם אין ציוד, נמצא פתרון יחד." },
+      { q: "כמה זמן מראש כדאי להזמין?", a: "מומלץ לפחות 2–3 שבועות מראש כדי להבטיח את התאריך ולהספיק להתאים את התוכן. דחוף יותר? צרו קשר — לפעמים יש פתרונות." },
+      { q: "האם יש הנחות לחבילות?", a: "כן — בהזמנת 3 הרצאות ומעלה יש 15% הנחה, ולמוסדות חינוך ועמותות יש מחירים מיוחדים. דברו איתי ונבנה חבילה משתלמת." }
+    ],
 
     // כרטיסי הרצאות — ערכו/הוסיפו לפי הצורך
     "cards.lectures": [
@@ -170,7 +204,38 @@ const TRANSLATIONS = {
     "contact.success": "Thank you! We'll be in touch soon 🙌",
 
     "footer.phone": "📞 +972 52-854-3393",
-    "footer.copy": "© 2026 Maya Cohen Harel. All rights reserved.",
+    "footer.copy": "© {year} Maya Cohen Harel. All rights reserved.",
+
+    "a11y.skip": "Skip to main content",
+
+    "process.eyebrow": "From booking to stage",
+    "process.title": "How does it work?",
+    "process.sub": "Four simple steps — from the first call to a talk your audience remembers.",
+
+    "faq.eyebrow": "Got questions?",
+    "faq.title": "Frequently Asked Questions",
+    "faq.sub": "Everything you need to know before booking — and if something's missing, just ask.",
+
+    "marquee.items": [
+      "🏫 Schools", "🏢 Companies & Orgs", "🏛️ Municipalities", "⚜️ Youth Movements",
+      "🎗️ Nonprofits", "🎓 Colleges", "👥 Team Days", "🌟 Community Evenings", "🎤 Conferences & Events"
+    ],
+
+    "cards.process": [
+      { icon: "📞", title: "Intro Call", desc: "Tell me about your audience, goal and event — by phone or WhatsApp, no commitment." },
+      { icon: "🎯", title: "Custom Fit", desc: "Together we shape the exact talk — topic, length, emphases and stories that fit you perfectly." },
+      { icon: "🎤", title: "The Talk", desc: "I arrive prepared, connected and smiling — giving your audience an unforgettable experience." },
+      { icon: "💬", title: "Follow-up", desc: "I stay available afterwards — for feedback, supporting materials and follow-up talks." }
+    ],
+
+    "cards.faq": [
+      { q: "How long is a talk?", a: "A standard talk runs 60 minutes; for adults it can extend to 90 minutes including Q&A. Everything is flexible and coordinated in advance for your event." },
+      { q: "Which audiences are the talks for?", a: "From middle and high school students to teams in organizations, municipalities, nonprofits and community evenings. Every talk is tailored in advance to the audience's age, background and goal." },
+      { q: "Do you travel anywhere in the country?", a: "Yes! Talks take place all over the country. For remote events travel arrangements may apply — we'll settle everything up front." },
+      { q: "What equipment is needed?", a: "Just a projector or screen, a sound system and a microphone. I bring the slides and videos — and if equipment is missing, we'll find a solution together." },
+      { q: "How far in advance should I book?", a: "At least 2–3 weeks ahead is recommended, to secure the date and tailor the content. In a rush? Get in touch — sometimes there are solutions." },
+      { q: "Are there package discounts?", a: "Yes — booking 3+ talks gets 15% off, and schools & nonprofits get special rates. Let's talk and build a package that works." }
+    ],
 
     "cards.lectures": [
       { icon: "🚀", title: "Breaking Forward", desc: "A motivational talk on leaving your comfort zone and achieving goals.", tag: "Youth" },

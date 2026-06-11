@@ -28,6 +28,50 @@
 
 html { scroll-behavior: smooth; }
 
+/* ---------- טאצ'ים גלובליים: סימון טקסט, פס גלילה, מיקוד מקלדת ---------- */
+::selection { background: rgba(124, 92, 255, 0.45); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(124, 92, 255, 0.45); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(124, 92, 255, 0.7); }
+
+:focus-visible {
+  outline: 2px solid var(--primary-2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* קישור דילוג לנגישות — מוסתר עד מיקוד מקלדת */
+.skip-link {
+  position: fixed;
+  inset-block-start: 10px;
+  inset-inline-start: 10px;
+  z-index: 200;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.6em 1.2em;
+  border-radius: 999px;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* סרגל התקדמות קריאה */
+.scroll-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  height: 3px;
+  background: var(--gradient);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 60;
+  pointer-events: none;
+}
+html[dir="rtl"] .scroll-progress { transform-origin: 100% 50%; }
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -132,7 +176,7 @@ img { max-width: 100%; display: block; }
   padding-block: 10px;
 }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.nav__logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.2rem; }
+.nav__logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.2rem; white-space: nowrap; }
 .nav__logo-mark {
   background: var(--gradient);
   -webkit-background-clip: text;
@@ -159,6 +203,8 @@ img { max-width: 100%; display: block; }
 }
 .nav__links a:hover { color: var(--text); }
 .nav__links a:hover::after { width: 100%; }
+.nav__links a.active { color: var(--text); }
+.nav__links a.active::after { width: 100%; }
 .nav__actions { display: flex; align-items: center; gap: 0.8rem; }
 
 .lang-toggle {
@@ -335,6 +381,47 @@ img { max-width: 100%; display: block; }
   transition: border-color 0.25s ease, background 0.25s ease;
 }
 .about__list li:hover { border-color: rgba(124, 92, 255, 0.5); background: var(--surface-2); }
+
+/* ---------- Audience marquee — פס קהלים נע ---------- */
+.marquee {
+  overflow: hidden;
+  direction: ltr; /* חשוב! ב-RTL המסילה מיושרת לימין והאנימציה בורחת מהמסך */
+  padding-block: 1.2rem;
+  border-block: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  /* דהייה עדינה בקצוות */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  direction: ltr; /* התנועה תמיד באותו כיוון — הטקסט בפנים עדיין מוצג נכון */
+  animation: marqueeScroll 36s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item {
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--text-dim);
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.marquee__item::after {
+  content: "✦";
+  margin-inline: 2.2rem; /* הריווח בתוך הפריט — כך הלולאה הכפולה נטולת "תפר" */
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 0.7em;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 /* ---------- Cards (lectures) ---------- */
 .cards {
@@ -516,6 +603,110 @@ html[dir="rtl"] .reel:hover .reel__play { transform: translate(50%, -50%) scale(
 }
 .testimonial__name { font-weight: 700; font-size: 0.98rem; line-height: 1.3; }
 .testimonial__role { color: var(--text-dim); font-size: 0.84rem; margin-top: 0.15rem; }
+
+/* ---------- Process — איך זה עובד ---------- */
+.process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+}
+.step {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.4rem 1.6rem 1.8rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.step:hover {
+  transform: translateY(-8px);
+  border-color: rgba(124, 92, 255, 0.5);
+  box-shadow: 0 0 30px rgba(124, 92, 255, 0.15), var(--shadow);
+}
+.step__num {
+  position: absolute;
+  inset-block-start: -16px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: #0b0f1f;
+  font-weight: 900;
+  font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(124, 92, 255, 0.4);
+}
+html[dir="rtl"] .step__num { transform: translateX(50%); }
+.step__icon {
+  font-size: 2.2rem;
+  width: 64px; height: 64px;
+  margin: 0 auto 1rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-2);
+  border-radius: 16px;
+}
+.step__title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; }
+.step__desc { color: var(--text-dim); font-size: 0.93rem; }
+
+/* ---------- FAQ — שאלות נפוצות ---------- */
+.faq__list {
+  max-width: 760px;
+  margin-inline: auto;
+  display: grid;
+  gap: 0.9rem;
+}
+.faq__item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  overflow: hidden;
+}
+.faq__item:hover { border-color: rgba(124, 92, 255, 0.4); }
+.faq__item[open] { border-color: rgba(124, 92, 255, 0.5); background: var(--surface-2); }
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.4rem;
+  font-weight: 700;
+  font-size: 1.02rem;
+  cursor: pointer;
+  list-style: none; /* מסתיר את משולש ברירת המחדל */
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__chevron {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--primary-2);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.faq__item[open] .faq__chevron {
+  transform: rotate(45deg); /* + הופך ל-× */
+  background: var(--gradient);
+  color: #0b0f1f;
+}
+.faq__a {
+  padding: 0 1.4rem 1.3rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  animation: faqOpen 0.3s ease;
+}
+@keyframes faqOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
 
 /* ---------- CTA Strip ---------- */
 .cta-strip {
@@ -746,6 +937,28 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
   100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.45), 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
+/* ---------- כפתור חזרה למעלה ---------- */
+.to-top {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-start: 24px; /* בצד הנגדי לכפתור הוואטסאפ */
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, background 0.2s ease;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--primary); color: #fff; }
+
 /* ---------- Scroll reveal ---------- */
 .reveal {
   opacity: 0;
@@ -787,6 +1000,8 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
   }
   html[dir="rtl"] .nav__links { inset-inline-end: auto; inset-inline-start: auto; right: auto; left: 0; transform: translateX(-100%); }
   .nav__links.open { transform: translateX(0); }
+  /* חייב specificity זהה לכלל ה-RTL שמעליו — אחרת התפריט לא נפתח בעברית */
+  html[dir="rtl"] .nav__links.open { transform: translateX(0); }
   .nav__links a { font-size: 1.15rem; }
   .nav__burger { display: flex; }
   .nav__cta { display: none; }
@@ -797,6 +1012,7 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
 
   .reels__grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials__grid { grid-template-columns: 1fr; }
+  .process__grid { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
 
   .footer__inner { flex-direction: column; align-items: center; text-align: center; gap: 1.2rem; }
   .footer__contact, .footer__social { justify-content: center; }
@@ -821,6 +1037,17 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
   .pricing__grid { grid-template-columns: 1fr; }
   .pricing__note { padding: 1rem; font-size: 0.88rem; }
 
+  .process__grid { grid-template-columns: 1fr; row-gap: 1.8rem; }
+  .step { padding: 2.2rem 1.4rem 1.5rem; }
+
+  .marquee__item { font-size: 0.88rem; }
+  .marquee__item::after { margin-inline: 1.4rem; }
+
+  .faq__q { padding: 1rem 1.1rem; font-size: 0.95rem; }
+  .faq__a { padding: 0 1.1rem 1.1rem; font-size: 0.92rem; }
+
+  .to-top { width: 42px; height: 42px; inset-block-end: 16px; inset-inline-start: 16px; }
+
   .testimonial { padding: 1.4rem; }
 
   .cta-strip { padding-block: 55px; }
@@ -836,4 +1063,5 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+  .marquee { display: none; } /* פס נע ללא תנועה = שורה כפולה חתוכה — עדיף בלעדיו */
 }

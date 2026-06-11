@@ -28,7 +28,8 @@
         if (m) m.setAttribute("content", val);
         return;
       }
-      el.textContent = val;
+      // {year} בזכויות היוצרים מתעדכן אוטומטית לשנה הנוכחית
+      el.textContent = val.replace("{year}", new Date().getFullYear());
     });
 
     // כפתור החלפת השפה מציג את השפה הבאה
@@ -40,6 +41,9 @@
     renderPricing();
     renderReels();
     renderTestimonials();
+    renderProcess();
+    renderFaq();
+    renderMarquee();
     updateWhatsapp();
   }
 
@@ -123,7 +127,72 @@
         video.play();
       });
     });
+
+    // וידאו אחד בכל פעם: הפעלה עוצרת את כל השאר; בסיום — חוזרים למצב התצוגה
+    grid.querySelectorAll("video").forEach((video) => {
+      video.addEventListener("play", () => {
+        grid.querySelectorAll("video").forEach((other) => {
+          if (other !== video) other.pause();
+        });
+      });
+      video.addEventListener("ended", () => {
+        const reel = video.closest(".reel");
+        if (!reel) return;
+        reel.classList.remove("playing");
+        video.controls = false;
+        video.currentTime = 0;
+      });
+    });
     observeReveals(grid);
+  }
+
+  /* ---------- שלבי "איך זה עובד" ---------- */
+  function renderProcess() {
+    const grid = document.getElementById("processGrid");
+    if (!grid) return;
+    const items = TRANSLATIONS[lang]["cards.process"] || [];
+    grid.innerHTML = items.map((s, i) => `
+      <div class="step reveal">
+        <span class="step__num">${i + 1}</span>
+        <div class="step__icon">${s.icon}</div>
+        <h3 class="step__title">${s.title}</h3>
+        <p class="step__desc">${s.desc}</p>
+      </div>
+    `).join("");
+    observeReveals(grid);
+  }
+
+  /* ---------- שאלות נפוצות (אקורדיון) ---------- */
+  function renderFaq() {
+    const list = document.getElementById("faqList");
+    if (!list) return;
+    const items = TRANSLATIONS[lang]["cards.faq"] || [];
+    list.innerHTML = items.map((f) => `
+      <details class="faq__item reveal">
+        <summary class="faq__q"><span>${f.q}</span><span class="faq__chevron" aria-hidden="true">+</span></summary>
+        <p class="faq__a">${f.a}</p>
+      </details>
+    `).join("");
+    // פתיחת שאלה סוגרת את האחרות — שומר על הרשימה נקייה
+    list.querySelectorAll("details").forEach((d) => {
+      d.addEventListener("toggle", () => {
+        if (!d.open) return;
+        list.querySelectorAll("details[open]").forEach((other) => {
+          if (other !== d) other.open = false;
+        });
+      });
+    });
+    observeReveals(list);
+  }
+
+  /* ---------- פס קהלים נע ---------- */
+  function renderMarquee() {
+    const track = document.getElementById("marqueeTrack");
+    if (!track) return;
+    const items = TRANSLATIONS[lang]["marquee.items"] || [];
+    const chips = items.map((m) => `<span class="marquee__item">${m}</span>`).join("");
+    // שתי עותקים — כשהראשון יוצא מהמסך השני נכנס, ללולאה חלקה
+    track.innerHTML = chips + chips;
   }
 
   /* ---------- המלצות ---------- */
@@ -208,17 +277,19 @@
 
     function closeNav() {
       burger.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
       links.classList.remove("open");
       overlay.classList.remove("active");
       document.body.style.overflow = "";
     }
 
-    window.addEventListener("scroll", () => {
-      nav.classList.toggle("scrolled", window.scrollY > 40);
-    }, { passive: true });
+    function syncScrolled() { nav.classList.toggle("scrolled", window.scrollY > 40); }
+    window.addEventListener("scroll", syncScrolled, { passive: true });
+    syncScrolled(); // גם אם הדף נטען כבר גלול (רענון באמצע הדף)
 
     burger.addEventListener("click", () => {
       const isOpen = burger.classList.toggle("open");
+      burger.setAttribute("aria-expanded", String(isOpen));
       links.classList.toggle("open");
       overlay.classList.toggle("active", isOpen);
       document.body.style.overflow = isOpen ? "hidden" : "";
@@ -232,6 +303,52 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeNav();
+    });
+  }
+
+  /* ---------- Scrollspy: הדגשת הקישור הפעיל בתפריט לפי הגלילה ---------- */
+  function initScrollSpy() {
+    const links = document.querySelectorAll(".nav__links a[href^='#']");
+    if (!links.length) return;
+    const map = new Map(); // section id -> link
+    links.forEach((a) => {
+      const sec = document.querySelector(a.getAttribute("href"));
+      if (sec) map.set(sec, a);
+    });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a) => a.classList.remove("active"));
+        const link = map.get(e.target);
+        if (link) link.classList.add("active");
+      });
+    }, { rootMargin: "-35% 0px -55% 0px" });
+    map.forEach((_, sec) => obs.observe(sec));
+  }
+
+  /* ---------- סרגל התקדמות קריאה ---------- */
+  function initProgressBar() {
+    const bar = document.getElementById("scrollProgress");
+    if (!bar) return;
+    function update() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.scrollY / max : 0;
+      bar.style.transform = `scaleX(${p})`;
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update, { passive: true });
+    update();
+  }
+
+  /* ---------- כפתור חזרה למעלה ---------- */
+  function initBackToTop() {
+    const btn = document.getElementById("toTop");
+    if (!btn) return;
+    window.addEventListener("scroll", () => {
+      btn.classList.toggle("show", window.scrollY > 600);
+    }, { passive: true });
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
@@ -262,7 +379,9 @@
         : `Lecture booking:\nName: ${data.get("name")}\nPhone: ${phone}\nType: ${typeText}\nMessage: ${data.get("message") || "-"}`;
       window.open(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(lines)}`, "_blank");
 
-      form.querySelector("#formSuccess").hidden = false;
+      const success = form.querySelector("#formSuccess");
+      success.hidden = false;
+      setTimeout(() => { success.hidden = true; }, 7000); // ההודעה נעלמת לבד
       form.reset();
       form.querySelector("#phone").dispatchEvent(new Event("input")); // איפוס שכבת הרפאים לתבנית
     });
@@ -314,6 +433,9 @@
     initNav();
     initForm();
     initPhoneMask();
+    initScrollSpy();
+    initProgressBar();
+    initBackToTop();
 
     document.getElementById("langToggle").addEventListener("click", () => {
       applyLang(lang === "he" ? "en" : "he");
