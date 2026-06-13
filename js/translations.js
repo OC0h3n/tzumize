@@ -79,9 +79,12 @@ const TRANSLATIONS = {
     "contact.message": "הודעה",
     "contact.send": "שליחה",
     "contact.success": "תודה! נחזור אליכם בהקדם 🙌",
+    "contact.consent": "בלחיצה על \"שליחה\" ייפתח וואטסאפ עם הפרטים שמילאתם כדי שתשלחו אותם אליי, ואני אחזור אליכם בנוגע לפנייה. אינני שומרת את הפרטים בשרת. למידע נוסף:",
+    "contact.privacyLink": "מדיניות פרטיות",
 
     "footer.phone": "📞 052-854-3393",
     "footer.copy": "© {year} מאיה כהן הראל. כל הזכויות שמורות.",
+    "footer.privacy": "מדיניות פרטיות",
 
     "a11y.skip": "דלגו לתוכן הראשי",
 
@@ -207,9 +210,12 @@ const TRANSLATIONS = {
     "contact.message": "Message",
     "contact.send": "Send",
     "contact.success": "Thank you! We'll be in touch soon 🙌",
+    "contact.consent": "Clicking \"Send\" opens WhatsApp with the details you entered so you can send them to me, and I'll get back to you about your request. I do not store the details on a server. Learn more:",
+    "contact.privacyLink": "Privacy Policy",
 
     "footer.phone": "📞 +972 52-854-3393",
     "footer.copy": "© {year} Maya Cohen Harel. All rights reserved.",
+    "footer.privacy": "Privacy Policy",
 
     "a11y.skip": "Skip to main content",
 

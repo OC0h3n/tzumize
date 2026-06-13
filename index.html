@@ -23,10 +23,9 @@
   <meta name="twitter:description" content="הרצאות מרתקות לנוער ולמבוגרים — הזמינו הרצאה עכשיו" />
   <meta name="twitter:image" content="TODO_SITE_URL/assets/images/speaker.jpg" />
 
-  <!-- Google Fonts: Heebo (Hebrew) + Poppins (English) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800;900&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <!-- גופנים מקומיים (Heebo + Poppins) — מאוחסנים ב-assets/fonts/ ולא נטענים
+       משרתי Google, כדי שלא תישלח כתובת ה-IP של הגולש לגוגל (תאימות תיקון 13). -->
+  <link rel="stylesheet" href="css/fonts.css" />
 
   <!-- Favicon: ✦ מסמל הלוגו, עובד בכל דפדפן מודרני ללא קובץ נוסף -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>" />
@@ -307,6 +306,10 @@
           <textarea id="message" name="message" rows="4"></textarea>
         </div>
         <button type="submit" class="btn btn--primary btn--lg" data-i18n="contact.send">שליחה</button>
+        <p class="contact__consent">
+          <span data-i18n="contact.consent">בלחיצה על "שליחה" ייפתח וואטסאפ עם הפרטים שמילאתם כדי שתשלחו אותם אליי, ואני אחזור אליכם בנוגע לפנייה. אינני שומרת את הפרטים בשרת. למידע נוסף:</span>
+          <a href="privacy.html" data-i18n="contact.privacyLink">מדיניות פרטיות</a>
+        </p>
         <p class="contact__success" id="formSuccess" data-i18n="contact.success" hidden>תודה! נחזור אליכם בהקדם 🙌</p>
       </form>
     </div>
@@ -328,7 +331,11 @@
         <a href="https://www.facebook.com/mayach22" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
       </div>
     </div>
-    <p class="footer__copy" data-i18n="footer.copy">© 2026 מאיה כהן הראל. כל הזכויות שמורות.</p>
+    <p class="footer__copy">
+      <span data-i18n="footer.copy">© 2026 מאיה כהן הראל. כל הזכויות שמורות.</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <a href="privacy.html" data-i18n="footer.privacy">מדיניות פרטיות</a>
+    </p>
   </footer>
 
   <!-- Floating WhatsApp button -->
