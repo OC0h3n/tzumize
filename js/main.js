@@ -63,6 +63,7 @@
         <p class="card__desc">${c.desc}</p>
       </article>
     `).join("");
+    applyStagger(grid);
     observeReveals(grid);
   }
 
@@ -87,6 +88,7 @@
           <a href="#contact" class="btn btn--primary">${t["pricing.cta"]}</a>
         </div>`;
     }).join("");
+    applyStagger(grid);
     observeReveals(grid);
   }
 
@@ -146,6 +148,7 @@
         video.currentTime = 0;
       });
     });
+    applyStagger(grid);
     observeReveals(grid);
   }
 
@@ -162,6 +165,7 @@
         <p class="step__desc">${s.desc}</p>
       </div>
     `).join("");
+    applyStagger(grid);
     observeReveals(grid);
   }
 
@@ -216,6 +220,7 @@
           </div>
         </div>
       </div>`).join("");
+    applyStagger(grid);
     observeReveals(grid);
   }
 
@@ -243,6 +248,13 @@
   }
   function observeReveals(scope) {
     (scope || document).querySelectorAll(".reveal:not(.in)").forEach((el) => revealObserver.observe(el));
+  }
+  /* כניסה מדורגת — כל כרטיס נחשף מעט אחרי קודמו (תחושת Motion-Driven) */
+  function applyStagger(grid, step) {
+    if (!grid) return;
+    [...grid.children].forEach((el, i) => {
+      if (el.classList.contains("reveal")) el.style.setProperty("--reveal-delay", (i * (step || 70)) + "ms");
+    });
   }
 
   /* ---------- ספירת מספרים בסטטיסטיקות ---------- */

@@ -107,7 +107,7 @@
 
   /* ---------- Tilt תלת-ממדי + זוהר נקודתי על כרטיסים ----------
      מאזין גלובלי אחד (delegation) — שורד גם רינדור מחדש בהחלפת שפה */
-  const TILT_SEL = ".card, .price-card, .testimonial, .step, .about__photo-frame";
+  const TILT_SEL = ".card, .price-card, .testimonial, .step";
   function initTilt() {
     let current = null;
     const MAX = 9; // מעלות הטיה מקסימליות
@@ -224,6 +224,62 @@
     onScroll();
   }
 
+  /* ---------- כרטיס 3D אינטראקטיבי (תמונת המרצה) ----------
+     ההטיה חזקה ומוחלקת, השכבות (צ'יפ/כדורים/ניצוץ) צפות בעומק,
+     וברק נסחף על התמונה לפי מיקום הסמן. */
+  function initPhoto3D() {
+    const scene = document.getElementById("aboutScene");
+    if (!scene) return;
+    const tilt = scene.querySelector(".about__photo-tilt");
+    const glare = scene.querySelector(".photo-glare");
+    if (!tilt) return;
+    const MAX = 16; // הטיה דרמטית יותר מהכרטיסים הרגילים
+    let raf = 0, tx = 0, ty = 0;
+
+    function onMove(e) {
+      const r = scene.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      tx = (px - 0.5) * MAX;       // rotateY
+      ty = (0.5 - py) * MAX;       // rotateX
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        tilt.style.transition = "transform 0.12s ease-out";
+        tilt.style.transform =
+          `rotateX(${ty}deg) rotateY(${tx}deg) translateY(-4px)`;
+        if (glare) {
+          glare.style.opacity = "1";
+          glare.style.setProperty("--glare", (30 + px * 80) + "%");
+        }
+        raf = 0;
+      });
+    }
+    function reset() {
+      tilt.style.transition = "transform 0.6s cubic-bezier(0.2,0.8,0.2,1)";
+      tilt.style.transform = "";
+      if (glare) glare.style.opacity = "0";
+    }
+
+    scene.addEventListener("pointermove", onMove, { passive: true });
+    scene.addEventListener("pointerleave", reset);
+  }
+
+  /* ---------- עומק רקע עוקב-עכבר — ה-blobs נעים בעדינות ---------- */
+  function initHeroDepth() {
+    const blobs = document.querySelector(".bg-blobs");
+    if (!blobs) return;
+    let tx = 0, ty = 0, x = 0, y = 0;
+    window.addEventListener("pointermove", (e) => {
+      tx = (e.clientX / window.innerWidth - 0.5) * 40;
+      ty = (e.clientY / window.innerHeight - 0.5) * 40;
+    }, { passive: true });
+    (function follow() {
+      x += (tx - x) * 0.05; y += (ty - y) * 0.05;
+      blobs.style.transform = `translate(${x}px, ${y}px)`;
+      requestAnimationFrame(follow);
+    })();
+  }
+
   /* ---------- קונפטי 🎉 — מתפוצץ בשליחת טופס מוצלחת ---------- */
   function confettiBurst(origin) {
     const canvas = document.createElement("canvas");
@@ -277,6 +333,8 @@
       initGlow();
       initTilt();
       initMagnetic();
+      initPhoto3D();
+      initHeroDepth();
     }
   });
 })();

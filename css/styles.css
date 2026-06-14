@@ -369,6 +369,101 @@ img { max-width: 100%; display: block; }
   font-size: 4rem;
 }
 .about__photo-placeholder[hidden] { display: none; }
+
+/* ----- כרטיס 3D אינטראקטיבי (effects.js → initPhoto3D) ----- */
+.about__photo-scene { perspective: 1100px; }
+.about__photo-tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.about__photo-frame { transform: translateZ(0); }
+
+/* ברק שנסחף על התמונה בעת ההטיה */
+.photo-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--radius-lg) - 8px);
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  background-size: 250% 100%;
+  background-position: var(--glare, 130%) 0;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* צ'יפ "10+ שנים" צף קדימה */
+.float-chip {
+  position: absolute;
+  inset-block-end: 22px;
+  inset-inline-start: -26px;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.05rem;
+  background: rgba(18, 24, 49, 0.72);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  transform: translateZ(60px);
+  animation: floatY 5s ease-in-out infinite;
+}
+.float-chip strong {
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+.float-chip span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  max-width: 6.5em;
+  line-height: 1.2;
+}
+
+/* כדורי זוהר וניצוץ צפים בעומק */
+.float-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+.float-orb--1 {
+  width: 96px; height: 96px;
+  top: -30px; inset-inline-end: -28px;
+  background: radial-gradient(circle at 35% 35%, rgba(124, 92, 255, 0.9), rgba(124, 92, 255, 0) 70%);
+  transform: translateZ(45px);
+  animation: floatY 6s ease-in-out infinite reverse;
+}
+.float-orb--2 {
+  width: 58px; height: 58px;
+  inset-block-end: 64px; inset-inline-end: -18px;
+  background: radial-gradient(circle at 35% 35%, rgba(0, 212, 255, 0.85), rgba(0, 212, 255, 0) 70%);
+  transform: translateZ(90px);
+  animation: floatY 4.5s ease-in-out infinite;
+}
+.float-spark {
+  position: absolute;
+  top: 24px; inset-inline-start: -16px;
+  font-size: 1.5rem;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform: translateZ(105px);
+  animation: floatY 5.5s ease-in-out infinite;
+}
+@keyframes floatY {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-chip, .float-orb, .float-spark { animation: none; }
+  .about__photo-tilt { transition: none; }
+}
+
 .about__text .section__title { text-align: start; }
 .about__text p { color: var(--text-dim); margin-bottom: 1.1rem; }
 .about__list { margin-top: 1.5rem; display: grid; gap: 0.7rem; }
@@ -1054,6 +1149,7 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
 .reveal.in { opacity: 1; transform: none; }
 

@@ -39,6 +39,7 @@ const TRANSLATIONS = {
     "about.li1": "✦ הרצאות מותאמות אישית לכל קהל",
     "about.li2": "✦ שילוב סיפור, הומור ותוכן מעשי",
     "about.li3": "✦ ניסיון מול אלפי מאזינים בכל הארץ",
+    "about.chipYears": "שנים על הבמה",
 
     "lectures.eyebrow": "מה אני מעבירה",
     "lectures.title": "ההרצאות שלי",
@@ -170,6 +171,7 @@ const TRANSLATIONS = {
     "about.li1": "✦ Talks tailored to every audience",
     "about.li2": "✦ Blend of story, humor and practical content",
     "about.li3": "✦ Experience before thousands of listeners nationwide",
+    "about.chipYears": "years on stage",
 
     "lectures.eyebrow": "What I deliver",
     "lectures.title": "My Lectures",
