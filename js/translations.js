@@ -33,7 +33,7 @@ const TRANSLATIONS = {
     "hero.stat3": "שנות ניסיון",
 
     "about.eyebrow": "קצת עליי",
-    "about.title": "מי עומדת מאחורי הבמה",
+    "about.title": "מי שעומדת על הבמה",
     "about.p1": "כבר למעלה מעשור אני עולה לבמות מול קהלים מגוונים — מבני נוער ועד מנהלים בכירים. ההרצאות שלי משלבות סיפור אישי, תובנות מעשיות והרבה אנרגיה, ומשאירות את הקהל עם משהו לקחת הביתה.",
     "about.p2": "כל הרצאה נבנית בהתאמה אישית לקהל ולמטרה — בין אם זו הרצאת מוטיבציה לנוער, יום גיבוש לארגון, או ערב העשרה קהילתי.",
     "about.li1": "✦ הרצאות מותאמות אישית לכל קהל",
@@ -165,7 +165,7 @@ const TRANSLATIONS = {
     "hero.stat3": "Years of experience",
 
     "about.eyebrow": "A bit about me",
-    "about.title": "Who's behind the stage",
+    "about.title": "Who's on the stage",
     "about.p1": "For over a decade I've stood on stages before diverse audiences — from teenagers to senior executives. My talks blend personal storytelling, practical insights and plenty of energy, leaving the audience with something to take home.",
     "about.p2": "Every talk is custom-built for the audience and the goal — whether a motivational talk for teens, a corporate team day, or a community enrichment evening.",
     "about.li1": "✦ Talks tailored to every audience",
