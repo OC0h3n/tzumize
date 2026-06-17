@@ -22,6 +22,7 @@
   --container: 1160px;
   --font-he:   "Heebo", system-ui, sans-serif;
   --font-en:   "Poppins", system-ui, sans-serif;
+  --font-display: "Frank Ruhl Libre", Georgia, "Times New Roman", serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -247,14 +248,12 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1.2rem;
 }
 .hero__title {
-  font-size: clamp(2.6rem, 7vw, 5rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  background: linear-gradient(120deg, #ffffff 0%, #c9b8ff 35%, #00d4ff 60%, #c9b8ff 80%, #ffffff 100%); background-size: 200% auto; animation: titleShimmer 6s linear infinite;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: var(--text);
   margin-bottom: 1.4rem;
 }
 .hero__subtitle {
@@ -316,10 +315,6 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1rem;
   letter-spacing: 0.03em;
 }
-@keyframes titleShimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
-}
 
 /* ---------- Sections ---------- */
 .section { padding-block: clamp(70px, 10vw, 120px); position: relative; }
@@ -334,9 +329,10 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0.8rem;
 }
 .section__title {
-  font-size: clamp(1.9rem, 4.5vw, 3rem);
-  font-weight: 900;
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.7vw, 3.15rem);
+  font-weight: 700;
+  letter-spacing: 0;
   margin-bottom: 1rem;
 }
 .section__sub { color: var(--text-dim); font-size: 1.08rem; }
@@ -545,13 +541,14 @@ img { max-width: 100%; display: block; }
 }
 .card:hover { transform: translateY(-8px); border-color: rgba(124, 92, 255, 0.5); box-shadow: 0 0 30px rgba(124, 92, 255, 0.15), var(--shadow); }
 .card__icon {
-  font-size: 2.4rem;
   width: 64px; height: 64px;
   display: flex; align-items: center; justify-content: center;
   background: var(--surface-2);
   border-radius: 16px;
   margin-bottom: 1.2rem;
+  color: var(--primary-2);
 }
+.card__icon svg { width: 30px; height: 30px; }
 .card__tag {
   position: absolute;
   inset-block-start: 1.4rem;
@@ -598,7 +595,8 @@ img { max-width: 100%; display: block; }
     radial-gradient(120% 80% at 50% 0%, rgba(124, 92, 255, 0.14), transparent 60%),
     var(--bg-soft);
 }
-.reel__ph-icon { font-size: 2.4rem; opacity: 0.45; }
+.reel__ph-icon { color: var(--text-dim); opacity: 0.6; }
+.reel__ph-icon svg { width: 40px; height: 40px; }
 .reel__ph-soon {
   font-size: 0.68rem;
   letter-spacing: 0.14em;
@@ -736,13 +734,14 @@ html[dir="rtl"] .reel:hover .reel__play { transform: translate(50%, -50%) scale(
 }
 html[dir="rtl"] .step__num { transform: translateX(50%); }
 .step__icon {
-  font-size: 2.2rem;
   width: 64px; height: 64px;
   margin: 0 auto 1rem;
   display: flex; align-items: center; justify-content: center;
   background: var(--surface-2);
   border-radius: 16px;
+  color: var(--primary-2);
 }
+.step__icon svg { width: 30px; height: 30px; }
 .step__title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem; }
 .step__desc { color: var(--text-dim); font-size: 0.93rem; }
 
@@ -820,11 +819,12 @@ html[dir="rtl"] .step__num { transform: translateX(50%); }
 }
 .cta-strip__inner { position: relative; z-index: 1; max-width: 760px; margin-inline: auto; }
 .cta-strip__title {
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.7vw, 3.15rem);
+  font-weight: 700;
   color: #0b0f1f;
   margin-bottom: 0.8rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .cta-strip__sub {
   color: rgba(11, 15, 31, 0.72);
@@ -1131,7 +1131,14 @@ html[dir="rtl"] .price-card__badge { transform: translateX(50%); }
 .fx-hover::after { opacity: 1; }
 
 /* המילה המתחלפת בהירו + סמן הקלדה מהבהב */
-.rotate-word { display: inline-block; min-width: 0.5ch; }
+.rotate-word {
+  display: inline-block;
+  min-width: 0.5ch;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .rotate-caret {
   display: inline-block;
   width: 0.07em;

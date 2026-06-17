@@ -29,7 +29,7 @@
       W = window.innerWidth; H = window.innerHeight;
       canvas.width = W * dpr; canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = W < 700 ? 34 : 72;
+      const count = W < 700 ? 26 : 52;
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -76,7 +76,7 @@
           const dx = a.x - b.x, dy = a.y - b.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < LINK * LINK) {
-            ctx.strokeStyle = `rgba(124,92,255,${(1 - Math.sqrt(d2) / LINK) * 0.18})`;
+            ctx.strokeStyle = `rgba(124,92,255,${(1 - Math.sqrt(d2) / LINK) * 0.13})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);

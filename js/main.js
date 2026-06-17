@@ -58,7 +58,7 @@
     grid.innerHTML = items.map((c) => `
       <article class="card reveal">
         <span class="card__tag">${c.tag}</span>
-        <div class="card__icon">${c.icon}</div>
+        <div class="card__icon">${ICONS[c.icon] || ""}</div>
         <h3 class="card__title">${c.title}</h3>
         <p class="card__desc">${c.desc}</p>
       </article>
@@ -97,7 +97,7 @@
     const grid = document.getElementById("reelsGrid");
     if (!grid) return;
     const playLabel = TRANSLATIONS[lang]["reels.play"];
-    const placeholderHTML = `<div class="reel__placeholder"><span class="reel__ph-icon">🎬</span><span class="reel__ph-soon">${TRANSLATIONS[lang]["reels.soon"]}</span></div>`;
+    const placeholderHTML = `<div class="reel__placeholder"><span class="reel__ph-icon">${ICONS.film}</span><span class="reel__ph-soon">${TRANSLATIONS[lang]["reels.soon"]}</span></div>`;
     grid.innerHTML = REELS.map((r) => {
       const media = r.src
         ? `<video src="${r.src}" ${r.poster ? `poster="${r.poster}"` : ""} preload="metadata" playsinline></video>`
@@ -160,7 +160,7 @@
     grid.innerHTML = items.map((s, i) => `
       <div class="step reveal">
         <span class="step__num">${i + 1}</span>
-        <div class="step__icon">${s.icon}</div>
+        <div class="step__icon">${ICONS[s.icon] || ""}</div>
         <h3 class="step__title">${s.title}</h3>
         <p class="step__desc">${s.desc}</p>
       </div>

@@ -105,10 +105,10 @@ const TRANSLATIONS = {
 
     // שלבי "איך זה עובד"
     "cards.process": [
-      { icon: "📞", title: "שיחת היכרות", desc: "מספרים לי על הקהל, המטרה והאירוע — בטלפון או בוואטסאפ, בלי התחייבות." },
-      { icon: "🎯", title: "התאמה אישית", desc: "בונים יחד את ההרצאה המדויקת — נושא, אורך, דגשים וסיפורים שמתאימים בדיוק לכם." },
-      { icon: "🎤", title: "ההרצאה עצמה", desc: "מגיעה מוכנה, מחוברת ומחויכת — ונותנת לקהל שלכם חוויה שלא שוכחים." },
-      { icon: "💬", title: "ליווי והמשך", desc: "נשארת זמינה גם אחרי — למשוב, חומרים נלווים והרצאות המשך." }
+      { icon: "phone", title: "שיחת היכרות", desc: "מספרים לי על הקהל, המטרה והאירוע — בטלפון או בוואטסאפ, בלי התחייבות." },
+      { icon: "target", title: "התאמה אישית", desc: "בונים יחד את ההרצאה המדויקת — נושא, אורך, דגשים וסיפורים שמתאימים בדיוק לכם." },
+      { icon: "mic", title: "ההרצאה עצמה", desc: "מגיעה מוכנה, מחוברת ומחויכת — ונותנת לקהל שלכם חוויה שלא שוכחים." },
+      { icon: "chat", title: "ליווי והמשך", desc: "נשארת זמינה גם אחרי — למשוב, חומרים נלווים והרצאות המשך." }
     ],
 
     // שאלות נפוצות
@@ -123,12 +123,12 @@ const TRANSLATIONS = {
 
     // כרטיסי הרצאות — ערכו/הוסיפו לפי הצורך
     "cards.lectures": [
-      { icon: "🚀", title: "פורצים קדימה", desc: "הרצאת מוטיבציה על יציאה מאזור הנוחות והגשמת מטרות.", tag: "נוער" },
-      { icon: "🧠", title: "חוסן מנטלי", desc: "כלים מעשיים להתמודדות עם לחץ, כישלון ושינוי.", tag: "מבוגרים" },
-      { icon: "🤝", title: "כוחה של מנהיגות", desc: "מה הופך אדם רגיל למוביל — סיפורים ותובנות.", tag: "ארגונים" },
-      { icon: "💡", title: "חשיבה יצירתית", desc: "איך לפתח רעיונות, לשבור דפוסים ולחדש.", tag: "נוער" },
-      { icon: "❤️", title: "מערכות יחסים", desc: "תקשורת, הקשבה וחיבור אמיתי בין אנשים.", tag: "מבוגרים" },
-      { icon: "🌍", title: "עולם משתנה", desc: "להתאים את עצמנו לעידן הטכנולוגי המהיר.", tag: "כללי" }
+      { icon: "rocket", title: "פורצים קדימה", desc: "הרצאת מוטיבציה על יציאה מאזור הנוחות והגשמת מטרות.", tag: "נוער" },
+      { icon: "brain", title: "חוסן מנטלי", desc: "כלים מעשיים להתמודדות עם לחץ, כישלון ושינוי.", tag: "מבוגרים" },
+      { icon: "handshake", title: "כוחה של מנהיגות", desc: "מה הופך אדם רגיל למוביל — סיפורים ותובנות.", tag: "ארגונים" },
+      { icon: "bulb", title: "חשיבה יצירתית", desc: "איך לפתח רעיונות, לשבור דפוסים ולחדש.", tag: "נוער" },
+      { icon: "heart", title: "מערכות יחסים", desc: "תקשורת, הקשבה וחיבור אמיתי בין אנשים.", tag: "מבוגרים" },
+      { icon: "globe", title: "עולם משתנה", desc: "להתאים את עצמנו לעידן הטכנולוגי המהיר.", tag: "כללי" }
     ]
     ,
 
@@ -235,10 +235,10 @@ const TRANSLATIONS = {
     ],
 
     "cards.process": [
-      { icon: "📞", title: "Intro Call", desc: "Tell me about your audience, goal and event — by phone or WhatsApp, no commitment." },
-      { icon: "🎯", title: "Custom Fit", desc: "Together we shape the exact talk — topic, length, emphases and stories that fit you perfectly." },
-      { icon: "🎤", title: "The Talk", desc: "I arrive prepared, connected and smiling — giving your audience an unforgettable experience." },
-      { icon: "💬", title: "Follow-up", desc: "I stay available afterwards — for feedback, supporting materials and follow-up talks." }
+      { icon: "phone", title: "Intro Call", desc: "Tell me about your audience, goal and event — by phone or WhatsApp, no commitment." },
+      { icon: "target", title: "Custom Fit", desc: "Together we shape the exact talk — topic, length, emphases and stories that fit you perfectly." },
+      { icon: "mic", title: "The Talk", desc: "I arrive prepared, connected and smiling — giving your audience an unforgettable experience." },
+      { icon: "chat", title: "Follow-up", desc: "I stay available afterwards — for feedback, supporting materials and follow-up talks." }
     ],
 
     "cards.faq": [
@@ -251,12 +251,12 @@ const TRANSLATIONS = {
     ],
 
     "cards.lectures": [
-      { icon: "🚀", title: "Breaking Forward", desc: "A motivational talk on leaving your comfort zone and achieving goals.", tag: "Youth" },
-      { icon: "🧠", title: "Mental Resilience", desc: "Practical tools for coping with stress, failure and change.", tag: "Adults" },
-      { icon: "🤝", title: "The Power of Leadership", desc: "What turns an ordinary person into a leader — stories and insights.", tag: "Organizations" },
-      { icon: "💡", title: "Creative Thinking", desc: "How to develop ideas, break patterns and innovate.", tag: "Youth" },
-      { icon: "❤️", title: "Relationships", desc: "Communication, listening and genuine connection between people.", tag: "Adults" },
-      { icon: "🌍", title: "A Changing World", desc: "Adapting ourselves to the fast technological era.", tag: "General" }
+      { icon: "rocket", title: "Breaking Forward", desc: "A motivational talk on leaving your comfort zone and achieving goals.", tag: "Youth" },
+      { icon: "brain", title: "Mental Resilience", desc: "Practical tools for coping with stress, failure and change.", tag: "Adults" },
+      { icon: "handshake", title: "The Power of Leadership", desc: "What turns an ordinary person into a leader — stories and insights.", tag: "Organizations" },
+      { icon: "bulb", title: "Creative Thinking", desc: "How to develop ideas, break patterns and innovate.", tag: "Youth" },
+      { icon: "heart", title: "Relationships", desc: "Communication, listening and genuine connection between people.", tag: "Adults" },
+      { icon: "globe", title: "A Changing World", desc: "Adapting ourselves to the fast technological era.", tag: "General" }
     ]
     ,
 
@@ -328,6 +328,6 @@ const REELS = [
    פרטי קשר — עדכנו כאן את מספר הוואטסאפ (בפורמט בינלאומי, ללא +).
    ---------------------------------------------------------------- */
 const CONTACT = {
-  whatsapp: "972528543393", // מאיה כהן הראל
+  whatsapp: "12086063770", // בוט הוואטסאפ של מאיה (Kapso) — לידים נכנסים אוטומטית לבוט
   whatsappMsg: { he: "היי! אשמח לשמוע פרטים על הזמנת הרצאה 🙂", en: "Hi! I'd love details about booking a talk 🙂" }
 };
