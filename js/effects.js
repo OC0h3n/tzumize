@@ -107,7 +107,7 @@
 
   /* ---------- Tilt תלת-ממדי + זוהר נקודתי על כרטיסים ----------
      מאזין גלובלי אחד (delegation) — שורד גם רינדור מחדש בהחלפת שפה */
-  const TILT_SEL = ".card, .price-card, .testimonial, .step";
+  const TILT_SEL = ".card, .price-card, .testimonial";
   function initTilt() {
     let current = null;
     const MAX = 9; // מעלות הטיה מקסימליות

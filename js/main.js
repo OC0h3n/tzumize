@@ -41,8 +41,6 @@
     renderPricing();
     renderReels();
     renderTestimonials();
-    renderProcess();
-    renderFaq();
     renderMarquee();
     updateWhatsapp();
 
@@ -150,46 +148,6 @@
     });
     applyStagger(grid);
     observeReveals(grid);
-  }
-
-  /* ---------- שלבי "איך זה עובד" ---------- */
-  function renderProcess() {
-    const grid = document.getElementById("processGrid");
-    if (!grid) return;
-    const items = TRANSLATIONS[lang]["cards.process"] || [];
-    grid.innerHTML = items.map((s, i) => `
-      <div class="step reveal">
-        <span class="step__num">${i + 1}</span>
-        <div class="step__icon">${ICONS[s.icon] || ""}</div>
-        <h3 class="step__title">${s.title}</h3>
-        <p class="step__desc">${s.desc}</p>
-      </div>
-    `).join("");
-    applyStagger(grid);
-    observeReveals(grid);
-  }
-
-  /* ---------- שאלות נפוצות (אקורדיון) ---------- */
-  function renderFaq() {
-    const list = document.getElementById("faqList");
-    if (!list) return;
-    const items = TRANSLATIONS[lang]["cards.faq"] || [];
-    list.innerHTML = items.map((f) => `
-      <details class="faq__item reveal">
-        <summary class="faq__q"><span>${f.q}</span><span class="faq__chevron" aria-hidden="true">+</span></summary>
-        <p class="faq__a">${f.a}</p>
-      </details>
-    `).join("");
-    // פתיחת שאלה סוגרת את האחרות — שומר על הרשימה נקייה
-    list.querySelectorAll("details").forEach((d) => {
-      d.addEventListener("toggle", () => {
-        if (!d.open) return;
-        list.querySelectorAll("details[open]").forEach((other) => {
-          if (other !== d) other.open = false;
-        });
-      });
-    });
-    observeReveals(list);
   }
 
   /* ---------- פס קהלים נע ---------- */

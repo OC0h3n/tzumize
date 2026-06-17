@@ -221,20 +221,6 @@
     </div>
   </section>
 
-  <!-- ===== Process — איך זה עובד ===== -->
-  <section class="section process" id="process">
-    <div class="container">
-      <div class="section__head reveal">
-        <span class="section__eyebrow" data-i18n="process.eyebrow">מהזמנה לבמה</span>
-        <h2 class="section__title" data-i18n="process.title">איך זה עובד?</h2>
-        <p class="section__sub" data-i18n="process.sub">ארבעה צעדים פשוטים — מהפנייה הראשונה ועד הרצאה שהקהל זוכר.</p>
-      </div>
-      <div class="process__grid" id="processGrid">
-        <!-- שלבים מוזרקים מ-main.js -->
-      </div>
-    </div>
-  </section>
-
   <!-- ===== Pricing ===== -->
   <section class="section pricing" id="pricing">
     <div class="container">
@@ -254,17 +240,21 @@
     </div>
   </section>
 
-  <!-- ===== FAQ — שאלות נפוצות ===== -->
-  <section class="section faq" id="faq">
+  <!-- ===== FAQ teaser — כפתור קטן שמוביל לעמוד השאלות הנפוצות (faq.html) ===== -->
+  <section class="faq-teaser" id="faq">
     <div class="container">
-      <div class="section__head reveal">
-        <span class="section__eyebrow" data-i18n="faq.eyebrow">יש שאלות?</span>
-        <h2 class="section__title" data-i18n="faq.title">שאלות נפוצות</h2>
-        <p class="section__sub" data-i18n="faq.sub">כל מה שחשוב לדעת לפני שמזמינים — ואם משהו חסר, פשוט תשאלו.</p>
-      </div>
-      <div class="faq__list" id="faqList">
-        <!-- שאלות מוזרקות מ-main.js -->
-      </div>
+      <a href="faq.html" class="faq-teaser__card reveal">
+        <span class="faq-teaser__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M9.2 9.3a2.8 2.8 0 0 1 5.4 1c0 1.9-2.8 2.5-2.8 2.5"/><line x1="12" y1="17" x2="12" y2="17"/>
+          </svg>
+        </span>
+        <span class="faq-teaser__text">
+          <strong data-i18n="faqTeaser.title">יש שאלות לפני שמזמינים?</strong>
+          <span data-i18n="faqTeaser.sub">אורך, קהלים, ציוד, זמינות והנחות — כל התשובות במקום אחד.</span>
+        </span>
+        <span class="faq-teaser__cta" data-i18n="faqTeaser.btn">לשאלות הנפוצות ←</span>
+      </a>
     </div>
   </section>
 
@@ -344,6 +334,8 @@
     </div>
     <p class="footer__copy">
       <span data-i18n="footer.copy">© 2026 מאיה כהן הראל. כל הזכויות שמורות.</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <a href="faq.html" data-i18n="footer.faq">שאלות נפוצות</a>
       <span class="footer__sep" aria-hidden="true">·</span>
       <a href="privacy.html" data-i18n="footer.privacy">מדיניות פרטיות</a>
     </p>
